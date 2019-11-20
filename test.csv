@@ -1,0 +1,8 @@
+,10538,10531,10494,10492,10491
+name,TCCXXXX Linux 5rd Release,TCCXXXX Linux 4rd Release,TCCXXXX Linux 3rd Release,TCCXXXX Linux 2st Release,TCCXXXX Linux 1st Release
+link,https://tcs.telechips.com:8443/rest/api/2/version/10538,https://tcs.telechips.com:8443/rest/api/2/version/10531,https://tcs.telechips.com:8443/rest/api/2/version/10494,https://tcs.telechips.com:8443/rest/api/2/version/10492,https://tcs.telechips.com:8443/rest/api/2/version/10491
+projectId,10104,10104,10104,10104,10104
+duedate,종료일 없음,2019-06-11,2019-05-02,2019-07-31,2019-06-14
+status,진행중,지연,지연,진행중,완료
+allissue,0,0,2,41,3
+unsolvedissue,0,0,2,40,1

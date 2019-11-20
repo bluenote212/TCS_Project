@@ -1,0 +1,25 @@
+<p class="auto-cursor-target"><br /></p><table><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><th>Milestone</th><th>종료일</th><th>상태</th><th>미해결/전체 이슈</th></tr><tr><td>
+i00
+</td><td>
+i01
+</td><td>
+i02
+</td><td>
+i03
+</td></tr><tr><td>
+i10
+</td><td>
+i11
+</td><td><span>
+i12
+</span></td><td><span>
+i13
+</span></td></tr><tr><td>
+i20
+</td><td><span>
+i21
+</span></td><td><span>
+i22
+</span></td><td><span>
+i23
+</span></td></tr></tbody></table><p class="auto-cursor-target"><br /></p><ac:structured-macro ac:name="panel" ac:schema-version="1" ac:macro-id="a55c5fe3-8f93-4adb-a190-4b8c4f20c39b"><ac:parameter ac:name="title">주간보고 특이사항</ac:parameter><ac:rich-text-body><p><br /></p></ac:rich-text-body></ac:structured-macro><p class="auto-cursor-target"><br /></p>
