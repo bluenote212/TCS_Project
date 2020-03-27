@@ -1,17 +1,3 @@
-runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/sit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Tue Feb 18 13:14:59 2020)---
-runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Wed Feb 19 15:08:50 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Thu Feb 20 20:19:38 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
 
 ## ---(Tue Feb 25 16:44:35 2020)---
 runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
@@ -113,3 +99,39 @@ runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-p
 runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Fri Mar 27 11:44:26 2020)---
+team_code = [
+        ['RND Innovation Team', '2', 'TMTPD'],
+        ['Wireless Team', '3', 'TMWT'],
+        ['SOC Advanced Team', '4', 'TMSAT'],
+        ['SOC Design Team', '5', 'TMSDT'],
+        ['SOC Verification Team', '6', 'TMSVT'],
+        ['SOC Implementation Team', '8', 'TMSIT'],
+        ['Security Solution Team', '9', 'TMSEC'],
+        ['System BSP Team', '10', 'TMBSP'],
+        ['Application BSP Team', '11', 'TMABT'],
+        ['SW Architecture Team', '14', 'TMSAT2'],
+        ['Automotive Platform Team', '15', 'TMAPT'],
+        ['Driver Assistance Platform Team', '18', 'TMAPT2'],
+        ['Bluetooth Team', '19', 'TMBT'],
+        ['Automotive MCU Team', '22', 'TMST'],
+        ['HW Platform Team', '87', 'TMHWT'],
+        ['HW Verification Team', '88', 'TMHVT'],
+        ['Media Android Team', '89', 'TMMT'],
+        ['Media Linux Team', '90', 'TMMLT'],
+        ['Media HAL Team', '91', 'TMMHT'],
+        ['Project Management Team', '92', 'TMPMT'],
+        ['STB Platform Team', '93', 'TMCAT'],
+        ['Technical Writing Team', '94', 'TMTWT'],
+        ['SOC IP Design Team', '95', 'TMIDT']
+        ]
+data = pd.DataFrame(team_code, columns = ['team', 'team_code', 'project_key'])
+con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+data.to_sql('team_code', index = False)
+con.close()
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')

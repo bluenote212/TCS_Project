@@ -18,19 +18,19 @@ confluence = Confluence(
 day = datetime.now()
 year = day.year
 month = day.month
-
-#DB에 저장된 worklog를 가져옴
+ 
+#worklog data를 가져옴
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 data = pd.read_sql("SELECT * FROM RND_worklog_" + str(month), con)
 con.close()
 
-#team code를 DB에서 가져와서 리스트로 변환
+#team_code data를 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 team_code = pd.read_sql("SELECT * FROM team_code", con)
 con.close()
 team_code = team_code.values.tolist()
-
-#리소스 현황 계산
+ 
+#각 팀원이 기록한 worklog를 확인하여 분류
 team_resource = []
 for i in range(len(team_code)):
     total_time = 0
@@ -40,6 +40,8 @@ for i in range(len(team_code)):
     team_resource.append([team_code[i][0], '<p>'+ str(round(((total_time-team_time)/total_time)*100, 1)) + '%</p>(' + str(round(total_time - team_time, 1)) + 'h)',\
                           '<p>'+ str(round((team_time/total_time)*100, 1)) + '%</p>(' + str(round(team_time, 1)) + 'h)'])
 
+    
+'''
 wiki_body = '<p class="auto-cursor-target"><br /></p><ac:structured-macro ac:name="section" ac:schema-version="1" ac:macro-id="4c919a65-51eb-4eab-bf47-6ddce442c602">\
 <ac:rich-text-body><p class="auto-cursor-target"><br /></p><ac:structured-macro ac:name="column" ac:schema-version="1" ac:macro-id="7bd8143d-208e-45e0-a2af-ed511d514b67">\
 <ac:parameter ac:name="width">33%</ac:parameter><ac:rich-text-body><p class="auto-cursor-target"><strong>SOCG</strong></p><table class="fixed-table"><colgroup><col style="width: 165.0px;" />\
@@ -93,3 +95,4 @@ confluence.update_page(
         type='page',
         representation='storage'
     )
+'''

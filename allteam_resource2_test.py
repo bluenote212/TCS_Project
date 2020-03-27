@@ -19,6 +19,42 @@ team_code = pd.read_sql("SELECT * FROM team_code", con)
 con.close()
 team_code = team_code.values.tolist()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #현재 년도, 월을 출력
 day = datetime.now()
 year = day.year

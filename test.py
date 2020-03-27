@@ -10,22 +10,19 @@ con.close()
 
 userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
-url = 'https://tcs.telechips.com:8443/rest/api/2/project'
 
-
-url = requests.get(url, userData)
+#모든 프로젝트의 카테고리 data 생성
+url = requests.get('https://tcs.telechips.com:8443/rest/api/2/project', userData)
 data = json.loads(url.text)
 
 projectCategory_list = []
-
-
 for i in range(0, len(data)):
     key = data[i]['key']
-    if 'projectCategory' in data[140]:
+    if 'projectCategory' in data[i]:
         projectCategory = data[i]['projectCategory']['name']
     else:
         projectCategory = 'None'
     data1 = [key, projectCategory]
     projectCategory_list.append(data1)
 
-print(projectCategory_list)
+
