@@ -32,10 +32,6 @@ team_code = {
 
 team_code_values = list(team_code.values())
 team_code_keys = list(team_code.keys())
-#print(team_code_key)
-
-#resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?includeInactiveUsers=false&groupname=' + team_code_values[0], userData)
-#resource = json.loads(resource.text)
 
 user_data = []
 for i in range(0, len(team_code_keys)):
@@ -43,11 +39,11 @@ for i in range(0, len(team_code_keys)):
     resource = json.loads(resource.text)
     c = team_code_keys[i]
     for i in range(0, len(resource['values'])):
-        a = resource['values'][i]['name']
+        a = resource['values'][i]['key']
         b = resource['values'][i]['displayName']
         d = resource['values'][i]['emailAddress']
         user_data.append([a,b,c,d])
-
+        
 #user_data의 값을 DB에 저장
 table = pd.DataFrame(user_data, columns=['employee_No', 'name', 'team', 'email'])
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')

@@ -13,10 +13,15 @@ password = 'infra4938hc!'
 project_list = ['BD8995A1']
 
 # Wiki auth
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
+user = pd.read_sql("SELECT * FROM id_pw", con)
+user_info = user.values.tolist()
+con.close()
+
 confluence = Confluence(
     url='https://wiki.telechips.com:8443',
-    username='b180093',
-    password='infra4938hc!')
+    username = user_info[0][0],
+    password = user_info[0][1])
 
 #현재 날짜 생성
 date = datetime.datetime.now()
@@ -24,7 +29,7 @@ nowdate = date.strftime('%Y-%m-%d')
 
 #------------------------------ DB에서 원하는 값을 추출-------------------#
 #DB 연결하여 data import
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
 table_version = pd.read_sql('select * from ' + project_list[0], con)
 #Dataframe에서 index값을 list로 추출
 data_index = table_version.index.tolist()

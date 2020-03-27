@@ -7,10 +7,12 @@ import sqlite3
 import datetime
 #from datetime import timedelta
 
-# ID, PW 정보
-username = 'b180093'
-password = 'infra4938hc!'
-userData = {'os_username': username, 'os_password': password}
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
+user = pd.read_sql("SELECT * FROM id_pw", con)
+user_info = user.values.tolist()
+con.close()
+
+userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 # jira auth
 jira = Jira(
@@ -27,11 +29,10 @@ nowdate = date.strftime('%Y-%m-%d')
 project_data = jira.projects(included_archived=None)
 #print(project_data)
 
-#issue = jira.get_all_project_issues('TPD', fields='worklog,timespent')
-
 gantt = requests.get('https://tcs.telechips.com:8443/rest/softwareplant-bigpicture/1.0/ppm/program', userData)
 gantt = json.loads(gantt.text)
 #print(gantt)
+
 
 data_project = {}
 for i_1 in range(0, len(project_data)):
@@ -54,8 +55,7 @@ for i_1 in range(0, len(project_data)):
 
 data = pd.DataFrame.from_dict(data_project, orient='index')
 
-
 #data_version의 값을 DB에 저장
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
 data.to_sql('project_info', con, if_exists='replace', index_label = 'projectName')
 con.close()

@@ -6,31 +6,37 @@ from dateutil.relativedelta import relativedelta
 import pandas as pd
 import calendar
 
-username = 'b180093'
-password = 'infra4938hc!'
-userData = {'os_username': username, 'os_password': password}
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
+user = pd.read_sql("SELECT * FROM id_pw", con)
+user_info = user.values.tolist()
+con.close()
+
+userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 '''
 #team code 참고
-Technology Planning Dept. : 2
+RND Innovation Team : 2
 Wireless Team : 3
 SOC Advanced Team : 4
 SOC Design Team : 5
 SOC Verification Team : 6
-RF Design Team : 7
 SOC Implementation Team : 8
-Security Team : 9
+Security Solution Team : 9
 System BSP Team : 10
 Application BSP Team : 11
-HW Team : 13
 SW Architecture Team : 14
 Automotive Platform Team : 15
-CE-Linux Team : 16
-CE-Android Team : 17
-Advanced Platform Team : 18
+Driver Assistance Platform Team : 18
 Bluetooth Team : 19
-Multimedia Team : 21
-Safety Team : 22
+Automotive MCU Team : 22
+HW Platform Team : 87
+HW Verification Team : 88
+Media Android Team : 89
+Media Linux Team : 90
+Media HAL Team : 91
+Project Management Team : 92
+STB Platform Team : 93
+Technical Writing Team : 94
 '''
 #현재 년도, 월을 출력
 day = datetime.now()
@@ -43,9 +49,10 @@ year_1 = day_before.year #전 월의 년도
 month_1 = day_before.month
 day_last = calendar.monthrange(year_1,month_1)[1]
 
+
 url1 = 'https://tcs.telechips.com:8443/rest/com.deniz.jira.worklog/1.0/timesheet/team?startDate='
 url2 = '&endDate='
-url3 = '&targetKey=18&extraIssueFilter=issuetype%20not%20in%20(Schedule%2C%22Meeting%20Minutes%22)'
+url3 = '&targetKey=4&extraIssueFilter=issuetype%20not%20in%20(Schedule%2C%22Meeting%20Minutes%22)'
 
 data_resource = []
 
@@ -79,6 +86,6 @@ for i in range(1, day.day):
 
 data = pd.DataFrame(data_resource, columns = ['date','project','time'])
 
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data.to_sql('Advanced Platform Team', con, if_exists='replace', index = False)
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
+data.to_sql('SOC Advanced Team', con, if_exists='replace', index = False)
 con.close()

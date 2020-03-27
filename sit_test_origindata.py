@@ -8,10 +8,15 @@ from datetime import datetime
 date = datetime.now().strftime('%Y-%m-%d')
 
 #Wiki auth
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
+user = pd.read_sql("SELECT * FROM id_pw", con)
+user_info = user.values.tolist()
+con.close()
+
 confluence = Confluence(
     url='https://wiki.telechips.com:8443',
-    username='b180093',
-    password='infra4938hc!')
+    username = user_info[0][0],
+    password = user_info[0][1])
 
 #레이블로 Wiki 페이지를 검색
 cql = 'label="통합테스트결과서"'
@@ -62,12 +67,12 @@ data = data_reindex.sort_values('test_date')
 data_dup = data.drop_duplicates(['Solution(SDK)', 'Solution_Version', 'Chip_Set'], keep='last') #3개 컬럼을 비교하여 중복값 제거
 
 #DB에 data를 저장
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
 data_dup.to_sql('SIT_test', con, if_exists='replace', index = False)
 con.close()
 
 #DB에서 값을 불러옴
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
 test_result = pd.read_sql("SELECT * FROM SIT_test", con)
 con.close()
 

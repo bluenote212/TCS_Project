@@ -7,7 +7,7 @@ import pandas as pd
 #from datetime import timedelta
 
 #project Key 입력
-project_list = ['SDF2']
+project_list = ['TDF2']
 
 # ID, PW 정보
 con = sqlite3.connect('C:/Users/telechips/database/tcs.db')

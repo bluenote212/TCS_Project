@@ -3,21 +3,25 @@ import datetime
 import simplejson as json
 import sqlite3
 import requests
+import pandas as pd
 #from datetime import timedelta
 
 #project Key 입력
 project_list = ['SC']
 
 # ID, PW 정보
-username = 'b180093'
-password = 'infra4938hc!'
-userData = {'os_username': username, 'os_password': password}
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
+user = pd.read_sql("SELECT * FROM id_pw", con)
+user_info = user.values.tolist()
+con.close()
+
+userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 # jira auth
 jira = Jira(
     url='https://tcs.telechips.com:8443',
-    username='b180093',
-    password='infra4938hc!')
+    username = user_info[0][0],
+    password = user_info[0][1])
 
 #현재 날짜 생성
 date = datetime.datetime.now()

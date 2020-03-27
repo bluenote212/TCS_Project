@@ -8,10 +8,15 @@ from datetime import datetime
 date = datetime.now().strftime('%Y-%m-%d')
 
 #Wiki auth
+con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+user = pd.read_sql("SELECT * FROM id_pw", con)
+user_info = user.values.tolist()
+con.close()
+
 confluence = Confluence(
     url='https://wiki.telechips.com:8443',
-    username='b180093',
-    password='infra4938hc!')
+    username = user_info[0][0],
+    password = user_info[0][1])
 
 #레이블로 Wiki 페이지를 검색
 cql = 'label="통합테스트결과서2"'
@@ -56,17 +61,17 @@ for i in range(0, len(pageid)):
     else:
         continue
 
-data = pd.DataFrame(test_result, columns = ['test_date','author','reference&revision', 'SDK_Name(Device)', 'SDK_Name(Platform)', 'SDK_Name(Application)', 'Subtitle',\
+data = pd.DataFrame(test_result, columns = ['test_date','author','reference&revision', 'SDK_Name_Device', 'SDK_Name_Platform', 'SDK_Name_Application', 'Subtitle',\
                                             'Version', 'Test_Type', 'Pass', 'Fail', 'N/A', 'N/T', 'Total', 'Requirement_Cnt',\
-                                            'Requirement_Coverage(%)', 'URL'])
+                                            'Requirement_Coverage', 'URL'])
 
 data_drop = data.drop(['author','reference&revision'], axis=1) #'author','reference&revision' 열 제거
 
-data_reindex = data_drop.reindex(['test_date', 'SDK_Name(Device)', 'SDK_Name(Platform)', 'SDK_Name(Application)', 'Subtitle', 'Version', 'Test_Type', 'Pass', 'Fail',\
-                                  'N/A', 'N/T', 'Total', 'Requirement_Cnt', 'Requirement_Coverage(%)', 'URL'], axis=1)
+data_reindex = data_drop.reindex(['test_date', 'SDK_Name_Device', 'SDK_Name_Platform', 'SDK_Name_Application', 'Subtitle', 'Version', 'Test_Type', 'Pass', 'Fail',\
+                                  'N/A', 'N/T', 'Total', 'Requirement_Cnt', 'Requirement_Coverage', 'URL'], axis=1)
 
 data = data_reindex.sort_values('test_date')
-data_dup = data.drop_duplicates(['SDK_Name(Device)', 'SDK_Name(Platform)', 'SDK_Name(Application)', 'Subtitle', 'Version'], keep='last')
+data_dup = data.drop_duplicates(['SDK_Name_Device', 'SDK_Name_Platform', 'SDK_Name_Application', 'Subtitle', 'Version'], keep='last')
 
 #DB에 data를 저장
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
@@ -83,12 +88,14 @@ test_result_list = test_result.values.tolist()
 
 for i in range(0, len(test_result_list)):
     sdk_name = test_result_list[i][1] + '_' + test_result_list[i][2] + '_' + test_result_list[i][3]
+    if sdk_name.endswith('_'):
+        sdk_name = sdk_name[:-1]
     test_result_list[i][1] = sdk_name
     del test_result_list[i][2:4]
 
 #Wiki 페이지에 Data 생성
 wiki_data_top = '<ac:structured-macro ac:name="table-excerpt" ac:schema-version="1" ac:macro-id="161913ea-7275-49ec-89af-a4e8e775825c">\
-<ac:parameter ac:name="name">Unit_test_backdata2</ac:parameter><ac:rich-text-body>\
+<ac:parameter ac:name="name">SIT_test_backdata2</ac:parameter><ac:rich-text-body>\
 <p><br /></p><table><colgroup><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /></colgroup>\
 <tbody><tr><th>test_date</th><th>SDK_Name</th><th>Subtitle</th><th>Version</th><th>Test_Type</th>\
 <th>Pass</th><th>Fail</th><th>N/A</th><th>N/T</th><th>Total</th><th>Req_Cnt</th><th>Req_Coverage(%)</th></tr>'

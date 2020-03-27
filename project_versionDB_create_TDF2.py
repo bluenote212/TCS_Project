@@ -10,7 +10,7 @@ import sqlite3
 
 #------------------------------ 해당 버전에서 필요한 data를 추출하여 DB에 저장-------------------#
 # 프로젝트 Key
-project_list = ['SDF2']
+project_list = ['TDF2']
 
 # 해당 버전의 전체 이슈 API
 allissue1 = 'https://tcs.telechips.com:8443/rest/api/2/version/'

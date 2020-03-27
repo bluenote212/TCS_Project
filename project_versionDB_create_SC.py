@@ -30,15 +30,18 @@ nowdate = date.strftime('%Y-%m-%d')
 #print(nowdate)
 
 # ID, PW 정보
-username = 'b180093'
-password = 'infra4938hc!'
-userData = {'os_username': username, 'os_password': password}
+con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
+user = pd.read_sql("SELECT * FROM id_pw", con)
+user_info = user.values.tolist()
+con.close()
+
+userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 # jira auth
 jira = Jira(
     url='https://tcs.telechips.com:8443',
-    username='b180093',
-    password='infra4938hc!')
+    username = user_info[0][0],
+    password = user_info[0][1])
 
 #TCS에 등록된 모든 프로젝트의 ID를 key, 프로젝트 이름을 value로 정리
 project_data = jira.projects(included_archived=None)
