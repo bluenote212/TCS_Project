@@ -19,11 +19,16 @@ team_code = pd.read_sql("SELECT * FROM team_code", con)
 con.close()
 team_code = team_code.values.tolist()
 
+#project info를 가져와서 리스트로 변환
+con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+data2 = pd.read_sql("SELECT * FROM project_info", con)
+con.close()
+project_info = data2.values.tolist()
+
 #현재 년도, 월을 출력
 day = datetime.now()
 year = day.year
 month = day.month
-
 
 #전 월을 출력
 day_before = datetime.now() - relativedelta(months=1)
@@ -31,8 +36,8 @@ year_1 = day_before.year #전 월의 년도
 month_1 = day_before.month
 day_last = calendar.monthrange(year_1,month_1)[1]
 
-data_resource = []
 
+data_resource = []
 #각 팀 리소스 data 생성
 for h in range(0, len(team_code)): #각 팀 반복
     url1 = 'https://tcs.telechips.com:8443/rest/com.deniz.jira.worklog/1.0/timesheet/team?startDate='
@@ -64,7 +69,13 @@ for h in range(0, len(team_code)): #각 팀 반복
                          worklog_author, round(issue_resource/60/60,2)]
                     data_resource.append(a)
 
-data = pd.DataFrame(data_resource, columns = ['date','project_name', 'project_key', 'issue_key', 'issue_type', 'subtask', 'parent_key', 'issue_parent_type','team',\
+for i in range(0,len(data_resource)):
+    for j in range(0, len(project_info)):
+        if data_resource[i][2] == project_info[j][0]:
+            data_resource[i].insert(3, project_info[j][1])
+
+
+data = pd.DataFrame(data_resource, columns = ['date','project_name', 'project_key', 'project_category', 'issue_key', 'issue_type', 'subtask', 'parent_key', 'issue_parent_type','team',\
                                               'worklog_author', 'time_spent'])
 
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')

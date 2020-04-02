@@ -1,111 +1,3 @@
-
-## ---(Tue Feb 25 16:44:35 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data2['projects'][0]['name'])
-print(data2['projects'][0]['issues'][0])
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data2['projects'][0]['issues'][0]['key'])
-issue_type = data2['projects'][j]['issues'][k]['type']
-issue_subtask = data2['projects'][j]['issues'][k]['subtask']
-issue_parent_key = data2['projects'][j]['issues'][k]['parentIssue']['key']
-print(data_resource)
-print(data_resource[0])
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data)
-print(data.values.tolist())
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Fri Feb 28 16:50:47 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Tue Mar  3 14:21:21 2020)---
-runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Tue Mar  3 15:50:02 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data)
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data)
-
-## ---(Tue Mar  3 18:48:32 2020)---
-print(data[data['team'] == 'RND Innovation Team'])
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data[data['team'] == 'RND Innovation Team'].sum(axis=11))
-print(data[data['team'] == 'RND Innovation Team'].sum(axis='time_spent'))
-print(data[data['team'] == 'RND Innovation Team'].sum(axis=0))
-print(data[data['team'] == 'RND Innovation Team'].sum(axis=1))
-print(data[data['team'] == 'RND Innovation Team'])
-print(data[data['team'] == 'RND Innovation Team']['time_spent'])
-print(data[data['team'] == 'RND Innovation Team']['time_spent'].sum())
-
-## ---(Wed Mar  4 10:07:48 2020)---
-runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data[data['team'] == 'RND Innovation Team']['time_spent'].sum())
-print(data[(data['team'] == 'RND Innovation Team') & (data['project_key'] == 'TMTPD')]['time_spent'].sum())
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/page_body_storage_info.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Thu Mar  5 14:11:20 2020)---
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/page_body_storage_info.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Fri Mar  6 09:49:35 2020)---
-runfile('C:/Users/B180093/.spyder-py3/page_body_storage_info.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Wed Mar 11 14:34:24 2020)---
-runfile('C:/Users/B180093/.spyder-py3/page_body_storage_info.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-print(team_resource)
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Fri Mar 20 16:31:18 2020)---
-runfile('C:/Users/B180093/.spyder-py3/unit_test_majorSDK.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data2)
-print(url)
-
-## ---(Tue Mar 24 09:56:31 2020)---
-runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Wed Mar 25 20:19:01 2020)---
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Thu Mar 26 11:56:52 2020)---
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data2[0])
-print(data2[0]['key'])
-print(data2[0]['name'])
-print(data2[0]['projectCategory']['name'])
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data[139]['projectCategory']['name'])
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Fri Mar 27 11:44:26 2020)---
-team_code = [
-        ['RND Innovation Team', '2', 'TMTPD'],
-        ['Wireless Team', '3', 'TMWT'],
-        ['SOC Advanced Team', '4', 'TMSAT'],
-        ['SOC Design Team', '5', 'TMSDT'],
         ['SOC Verification Team', '6', 'TMSVT'],
         ['SOC Implementation Team', '8', 'TMSIT'],
         ['Security Solution Team', '9', 'TMSEC'],
@@ -135,3 +27,86 @@ runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create.py', wdir='C:/User
 runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/test1.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Mon Mar 30 09:45:19 2020)---
+runfile('C:/Users/B180093/.spyder-py3/project_info.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource2_test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create2_test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource2_test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create2_test.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Wed Apr  1 09:21:24 2020)---
+runfile('C:/Users/B180093/.spyder-py3/project_info.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource_create2.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data_resource)
+print(month)
+
+## ---(Thu Apr  2 11:53:51 2020)---
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource_wikicreate2.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/allteam_resource_wikicreate2.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Thu Apr  2 14:56:40 2020)---
+runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(team_code)
+runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(resource)
+runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+import requests
+import sqlite3
+import simplejson as json
+import pandas as pd
+
+username = 'b180093'
+password = 'infra4938hc!'
+userData = {'os_username': username, 'os_password': password}
+
+#Team code
+team_code = {
+        'SOC_Advanced_Team' : 'DEPT173',
+        'SOC_IP_Design_Team' : 'DEPT188',
+        'SOC_Design_Team' : 'TCW01600',
+        'SOC_Verification_Team' : 'DEPT81',
+        'SOC_Implementation_Team' : 'TCW01420',
+        'HW Platform Team' : 'TCW03300',
+        'HW Verification Team' : 'DEPT180',
+        'System_BSP_Team' : 'TCW02900',
+        'Application_BSP_Team' : 'TCW02203',
+        'Security_solution_Team' : 'TCW02700',
+        'Media_Android Team' : 'DEPT182',
+        'Media_Linux Team' : 'TCW01230',
+        'Media_HAL Team' : 'DEPT183',
+        'Automotive_MCU Team' : 'TCW03100',
+        'Wireless_Team' : 'TCW02070',
+        'Bluetooth_Team' : 'DEPT75',
+        'SW_Architecture_Team' : 'DEPT175',
+        'Project_Management_Team' : 'DEPT184',
+        'STB_Platform_Team' : 'TCW03110',
+        'Automotive_Platform_Team' : 'TCW02500',
+        'Driver_Assistance_Platform_Team' : 'TCW02400',
+        'RND_Innovation_Team' : 'TCW04300',
+        'Technical_Writing_Team' : 'DEPT186'
+        }
+
+team_code_values = list(team_code.values())
+team_code_keys = list(team_code.keys())
+runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?includeInactiveUsers=false&groupname=' + team_code_values[i], userData)
+resource = json.loads(resource.text)
+runfile('C:/Users/B180093/.spyder-py3/project_info.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(type(resource))
+data = json.loads(str(resource.text))
+
+## ---(Thu Apr  2 17:14:04 2020)---
+runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
+print(team_code[0][1])
+runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
+resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?includeInactiveUsers=false&groupname=' + str(team_code[i][1]), userData)
+print(resource)
+runfile('C:/Users/B180093/.spyder-py3/project_info.py', wdir='C:/Users/B180093/.spyder-py3')
+print(url)
+runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')

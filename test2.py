@@ -4,7 +4,7 @@ import simplejson as json
 import pandas as pd
 
 username = 'b180093'
-password = 'infra4938hc!'
+password = 'infra4938hC!'
 userData = {'os_username': username, 'os_password': password}
 
 #Team code
@@ -36,7 +36,7 @@ team_code = [
 
 user_data = []
 for i in range(0, len(team_code)):
-    resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?includeInactiveUsers=false&groupname=' + team_code[i][1], userData)
+    resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?groupname=' + str(team_code[i][1]), userData)
     data = json.loads(resource.text)
     c = team_code[i][0]
     for i in range(0, len(data['values'])):
