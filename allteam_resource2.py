@@ -36,13 +36,12 @@ year_1 = day_before.year #전 월의 년도
 month_1 = day_before.month
 day_last = calendar.monthrange(year_1,month_1)[1]
 
-
 data_resource = []
 #각 팀 리소스 data 생성
 for h in range(0, len(team_code)): #각 팀 반복
     url1 = 'https://tcs.telechips.com:8443/rest/com.deniz.jira.worklog/1.0/timesheet/team?startDate='
     url2 = '&endDate='
-    url3 = '&targetKey=' + team_code[h][1] + '&extraIssueFilter=issuetype%20not%20in%20(Schedule%2C%22Meeting%20Minutes%22)'    
+    url3 = '&targetKey=' + team_code[h][1] + '&extraIssueFilter=issuetype%20not%20in%20(Schedule%2C%22Meeting%20Minutes%22)'
     # 현재 월의 워크로그 data를  data_resource에 저장
     for i in range(1, day.day):
         url = url1 + str(year) + '-' + str(month) + '-' + str(i) + url2 + str(year) + '-' + str(month) + '-' + str(i) + url3

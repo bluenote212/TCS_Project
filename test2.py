@@ -3,40 +3,43 @@ import sqlite3
 import simplejson as json
 import pandas as pd
 
-username = 'b180093'
-password = 'infra4938hC!'
-userData = {'os_username': username, 'os_password': password}
+#userdata를 가져와서 리스트로 변환
+con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+user = pd.read_sql("SELECT * FROM id_pw", con)
+user_info = user.values.tolist()
+con.close()
+userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 #Team code
 team_code = [
-        ['SOC_Advanced_Team', 'DEPT173'],
-        ['SOC_IP_Design_Team', 'DEPT188'],
-        ['SOC_Design_Team', 'TCW01600'],
-        ['SOC_Verification_Team', 'DEPT81'],
-        ['SOC_Implementation_Team', 'TCW01420'],
+        ['SOC Advanced Team', 'DEPT173'],
+        ['SOC IP Design Team', 'DEPT188'],
+        ['SOC Design Team', 'TCW01600'],
+        ['SOC Verification Team', 'DEPT81'],
+        ['SOC Implementation Team', 'TCW01420'],
         ['HW Platform Team', 'TCW03300'],
         ['HW Verification Team', 'DEPT180'],
-        ['System_BSP_Team', 'TCW02900'],
-        ['Application_BSP_Team', 'TCW02203'],
-        ['Security_solution_Team', 'TCW02700'],
-        ['Media_Android Team', 'DEPT182'],
-        ['Media_Linux Team', 'TCW01230'],
-        ['Media_HAL Team', 'DEPT183'],
-        ['Automotive_MCU Team', 'TCW03100'],
-        ['Wireless_Team', 'TCW02070'],
-        ['Bluetooth_Team', 'DEPT75'],
-        ['SW_Architecture_Team', 'DEPT175'],
-        ['Project_Management_Team', 'DEPT184'],
-        ['STB_Platform_Team', 'TCW03110'],
-        ['Automotive_Platform_Team', 'TCW02500'],
-        ['Driver_Assistance_Platform_Team', 'TCW02400'],
-        ['RND_Innovation_Team', 'TCW04300'],
-        ['Technical_Writing_Team' ,'DEPT186']
+        ['System BSP Team', 'TCW02900'],
+        ['Application BSP Team', 'TCW02203'],
+        ['Security solution Team', 'TCW02700'],
+        ['Media Android Team', 'DEPT182'],
+        ['Media Linux Team', 'TCW01230'],
+        ['Media HAL Team', 'DEPT183'],
+        ['Automotive MCU Team', 'TCW03100'],
+        ['Wireless Team', 'TCW02070'],
+        ['Bluetooth Team', 'DEPT75'],
+        ['SW Architecture Team', 'DEPT175'],
+        ['Project Management Team', 'DEPT184'],
+        ['STB Platform Team', 'TCW03110'],
+        ['Automotive Platform Team', 'TCW02500'],
+        ['Driver Assistance Platform Team', 'TCW02400'],
+        ['RND Innovation Team', 'TCW04300'],
+        ['Technical Writing Team' ,'DEPT186']
         ]
 
 user_data = []
 for i in range(0, len(team_code)):
-    resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?groupname=' + str(team_code[i][1]), userData)
+    resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?groupname=' + team_code[i][1], userData)
     data = json.loads(resource.text)
     c = team_code[i][0]
     for i in range(0, len(data['values'])):
