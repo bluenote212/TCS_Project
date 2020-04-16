@@ -1,64 +1,3 @@
-        'STB_Platform_Team' : 'TCW03110',
-        'Automotive_Platform_Team' : 'TCW02500',
-        'Driver_Assistance_Platform_Team' : 'TCW02400',
-        'RND_Innovation_Team' : 'TCW04300',
-        'Technical_Writing_Team' : 'DEPT186'
-        }
-
-team_code_values = list(team_code.values())
-team_code_keys = list(team_code.keys())
-runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?includeInactiveUsers=false&groupname=' + team_code_values[i], userData)
-resource = json.loads(resource.text)
-runfile('C:/Users/B180093/.spyder-py3/project_info.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-print(type(resource))
-data = json.loads(str(resource.text))
-
-## ---(Thu Apr  2 17:14:04 2020)---
-runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-print(team_code[0][1])
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?includeInactiveUsers=false&groupname=' + str(team_code[i][1]), userData)
-print(resource)
-runfile('C:/Users/B180093/.spyder-py3/project_info.py', wdir='C:/Users/B180093/.spyder-py3')
-print(url)
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Fri Apr  3 18:25:16 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Tue Apr  7 13:33:55 2020)---
-runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-user = pd.read_sql("SELECT * FROM id_pw", con)
-user_info = user.values.tolist()
-con.close()
-userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
-runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Wed Apr  8 14:49:52 2020)---
-runfile('C:/Users/B180093/.spyder-py3/project_info.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/project_data.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/project_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data)
-print(data[0]['id'])
-
-## ---(Thu Apr  9 17:46:18 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
-import requests
-import sqlite3
-import simplejson as json
-import pandas as pd
-
-#userdata를 가져와서 리스트로 변환
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 user = pd.read_sql("SELECT * FROM id_pw", con)
 user_info = user.values.tolist()
 con.close()
@@ -159,4 +98,46 @@ print(data[3]['fields'][7]['value']['value'])
 print(data[3]['fields'][8]['value'])
 print(type(data[3]['fields'][8]['value']))
 print(type(str(data[3]['fields'][8]['value'])))
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Thu Apr 16 13:53:23 2020)---
+runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
+print(page_list)
+print(test_result_list)
+print(test_result)
+module_result = test_result.drop_duplicates(['Module_Name'], keep='last')
+print(module_result)
+print(module_result.values.tolist())
+runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data[3]['fields'][0]['value']['value'])
+print(data[3]['fields'][8]['value']['value'])
+print(data[3]['fields'][8]['value']['value'].get())
+print(data[3]['fields'][7]['value']['value'])
+print(data[3]['fields'][8]['value']['value'])
+print(data[3]['fields'][8]['value']['value'].items())
+print(data[3]['fields'][7]['value']['value'].items())
+print(data[3]['fields'][7]['value']['value'].get())
+print(type(data[3]['fields'][7]['value']['value']))
+print(type(data[3]['fields'][7]['value']))
+print(data[3]['fields'][7]['value'].items())
+print(data[3]['fields'][8]['value'].items())
+print(data[3]['fields'][8]['value'])
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_data)
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(wiki_data_top + wiki_data_middle + wiki_data_bottom)
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_data)
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/page_body_storage_info.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(len(project_data[0]))
+print(len(project_data))
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_data[94])
+print(project_data[93])
+runfile('C:/Users/B180093/.spyder-py3/page_body_storage_info.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')

@@ -1,55 +1,62 @@
-import requests
-import sqlite3
-import simplejson as json
+from atlassian import Confluence
 import pandas as pd
+import sqlite3
 
-#userdata를 가져와서 리스트로 변환
+#Wiki auth
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 user = pd.read_sql("SELECT * FROM id_pw", con)
 user_info = user.values.tolist()
 con.close()
-userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
-#Team code
-team_code = [
-        ['SOC Advanced Team', 'DEPT173'],
-        ['SOC IP Design Team', 'DEPT188'],
-        ['SOC Design Team', 'TCW01600'],
-        ['SOC Verification Team', 'DEPT81'],
-        ['SOC Implementation Team', 'TCW01420'],
-        ['HW Platform Team', 'TCW03300'],
-        ['HW Verification Team', 'DEPT180'],
-        ['System BSP Team', 'TCW02900'],
-        ['Application BSP Team', 'TCW02203'],
-        ['Security solution Team', 'TCW02700'],
-        ['Media Android Team', 'DEPT182'],
-        ['Media Linux Team', 'TCW01230'],
-        ['Media HAL Team', 'DEPT183'],
-        ['Automotive MCU Team', 'TCW03100'],
-        ['Wireless Team', 'TCW02070'],
-        ['Bluetooth Team', 'DEPT75'],
-        ['SW Architecture Team', 'DEPT175'],
-        ['Project Management Team', 'DEPT184'],
-        ['STB Platform Team', 'TCW03110'],
-        ['Automotive Platform Team', 'TCW02500'],
-        ['Driver Assistance Platform Team', 'TCW02400'],
-        ['RND Innovation Team', 'TCW04300'],
-        ['Technical Writing Team' ,'DEPT186']
-        ]
+confluence = Confluence(
+    url='https://wiki.telechips.com:8443',
+    username = user_info[0][0],
+    password = user_info[0][1])
 
-user_data = []
-for i in range(0, len(team_code)):
-    resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?groupname=' + team_code[i][1], userData)
-    data = json.loads(resource.text)
-    c = team_code[i][0]
-    for i in range(0, len(data['values'])):
-        a = data['values'][i]['key']
-        b = data['values'][i]['displayName']
-        d = data['values'][i]['emailAddress']
-        user_data.append([a,b,c,d])
-        
-#user_data의 값을 DB에 저장
-table = pd.DataFrame(user_data, columns=['employee_No', 'name', 'team', 'email'])
+#DB에서 값을 불러옴
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-table.to_sql('userData', con, if_exists='replace', index=False)
+test_result = pd.read_sql("SELECT * FROM Unit_test3", con)
 con.close()
+
+module_result = test_result[test_result['test_date'] != 'none'].drop_duplicates(['Module_Name'], keep='last')
+
+#DataFrame을 리스트로 변환
+test_result_list = module_result.values.tolist()
+
+for i in range(0, len(test_result_list)):
+    sdk_name = test_result_list[i][1] + '_' + test_result_list[i][2] + '_' + test_result_list[i][3]
+    if sdk_name.endswith('_'):
+        sdk_name = sdk_name[:-1]
+    test_result_list[i][1] = sdk_name
+    del test_result_list[i][2:4]
+
+#Wiki 페이지에 Data 생성
+wiki_data_top = '<ac:structured-macro ac:name="table-excerpt" ac:schema-version="1" ac:macro-id="161913ea-7275-49ec-89af-a4e8e775825c">\
+<ac:parameter ac:name="name">module_name_test_result</ac:parameter><ac:rich-text-body>\
+<p><br /></p><table><colgroup><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /><col /></colgroup>\
+<tbody><tr><th>test_date</th><th>SDK_Name</th><th>Subtitle</th><th>Version</th>\
+<th>Module_Name</th><th>Module_subtitle</th><th>Module_Version</th><th>Pass</th><th>Fail</th><th>N/A</th><th>N/T</th><th>Total</th>\
+<th>Codesonar결함수</th><th>수정불가 Codesonar결함수</th><th>QAC결함수</th><th>수정불가 QAC결함수</th><th>전체코드라인수</th></tr>'
+
+wiki_data_middle = ''
+
+wiki_data_bottom = '</tbody></table><p class="auto-cursor-target"><br /></p></ac:rich-text-body></ac:structured-macro><p class="auto-cursor-target"><br /></p>'
+
+for i in range(0, len(test_result_list)):
+    data_row = '<tr>'
+    for j in range(0, len(test_result_list[i])-1):
+        if j==0:
+            data_row += '<td><a href="' + test_result_list[i][17] + '">' + test_result_list[i][j] + '</a></td>'
+        else:
+            data_row += '<td>' + test_result_list[i][j] + '</td>'
+    data_row += '</tr>'
+    wiki_data_middle += data_row
+    
+confluence.update_page(
+        parent_id = 99890426,
+        page_id = 120296661,
+        title = 'module_name_test_result',
+        body = wiki_data_top + wiki_data_middle + wiki_data_bottom,
+        type='page',
+        representation='storage'
+    )
