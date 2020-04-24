@@ -2,7 +2,9 @@ import requests
 import sqlite3
 import simplejson as json
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 import pandas as pd
+import calendar
 
 #userdata를 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
@@ -27,6 +29,13 @@ project_key = data2.values.tolist()
 day = datetime.now()
 year = day.year
 month = day.month
+first_day = day.replace(day=1)
+
+#전 월을 출력
+first_day_1 = first_day - relativedelta(months=1) 
+year_1 = first_day_1.year #전 월의 년도
+month_1 = first_day_1.month
+last_day = calendar.monthrange(year_1,month_1)[1]
 
 data_resource = []
 #각 팀 리소스 data 생성
@@ -35,8 +44,8 @@ for h in range(0, len(team_code)): #각 팀 반복
     url2 = '&endDate='
     url3 = '&targetKey=' + team_code[h][1] + '&extraIssueFilter=issuetype%20not%20in%20(Schedule%2C%22Meeting%20Minutes%22)'
     # 현재 월의 워크로그 data를  data_resource에 저장
-    for i in range(1, day.day):
-        url = url1 + str(year) + '-' + str(month) + '-' + str(i) + url2 + str(year) + '-' + str(month) + '-' + str(i) + url3
+    for i in range(1, last_day+1):
+        url = url1 + str(year_1) + '-' + str(month_1) + '-' + str(i) + url2 + str(year_1) + '-' + str(month_1) + '-' + str(i) + url3
         #월간 팀별 프로젝트 리소스
         data1 = requests.get(url, userData)
         data2 = json.loads(data1.text)
@@ -55,7 +64,7 @@ for h in range(0, len(team_code)): #각 팀 반복
                     issue_resource = 0
                     issue_resource = issue_resource + data2['projects'][j]['issues'][k]['workLogs'][l]['timeSpent']
                     worklog_author = data2['projects'][j]['issues'][k]['workLogs'][l]['authorName']
-                    date = str(year) + '-' + str(month) + '-' + str(i)
+                    date = str(year_1) + '-' + str(month_1) + '-' + str(i)
                     a = [date ,data2['projects'][j]['name'], data2['projects'][j]['key'], issue_key, issue_type, issue_subtask, issue_parent_key, issue_parent_type, team_code[h][0],\
                          worklog_author, round(issue_resource/60/60,2)]
                     data_resource.append(a)
@@ -65,10 +74,9 @@ for i in range(0,len(data_resource)):
         if data_resource[i][2] == project_key[j][0]:
             data_resource[i].insert(3, project_key[j][1])
 
-
 data = pd.DataFrame(data_resource, columns = ['date','project_name', 'project_key', 'project_category', 'issue_key', 'issue_type', 'subtask', 'parent_key', 'issue_parent_type','team',\
                                               'worklog_author', 'time_spent'])
 
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data.to_sql('RND_worklog_' + str(month), con, if_exists='replace', index = False)
+data.to_sql('RND_worklog_' + str(month_1), con, if_exists='replace', index = False)
 con.close()

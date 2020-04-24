@@ -1,123 +1,113 @@
+            data_row += '<td>' + project_data[i][j].replace('(', ' ').split()[0] + '</td>'
+        elif j == 4 and project_data[i][j] != '': #종료보고에 link
+            data_row += '<td><a href="' + project_data[i][j] + '">종료보고서</a></td>'
+        elif j == 7 and project_data[i][j] != '': #kick_off에 link
+            data_row += '<td><a href="' + project_data[i][j] + '">Kick-off회의</a></td>'
+        elif j == 11 and project_data[i][j] != '': #Wiki에 link
+            data_row += '<td><a href="' + project_data[i][j] + '">' + project_data[i][0] + '</a></td>'
+        elif (j == 12 or 13) and project_data[i][j] != '':
+            temp = ''
+            for k in range(0, len(project_data[i][j])):
+                temp += project_data[i][j][k].replace('(', ' ').split()[0]
+            data_row += '<td>' + temp + '</td>'
+        else: #나머지 항목은 값만 입력
+            data_row += '<td>' + project_data[i][j] + '</td>'
+    data_row += '</tr>'
+    wiki_data_middle += data_row
+
+
+wiki = wiki_data_top + wiki_data_middle + wiki_data_bottom
+wiki = wiki.replace("&","<p>&amp;</p>") #특수문자 & 치환
+
+confluence.update_page(
+        parent_id = 95455710,
+        page_id = 120297594,
+        title = 'project_data',
+        body = wiki,
+        type='page',
+        representation='storage'
+    )
+print(temp)
+runfile('C:/Users/B180093/.spyder-py3/profield_projectDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_data[0][12][0])
+print(project_data[0][12][0].replace('(', ' ').split()[0])
+runfile('C:/Users/B180093/.spyder-py3/profield_projectDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_data[0])
+runfile('C:/Users/B180093/.spyder-py3/profield_projectDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_data[0])
+print(project_data[0][12])
+print(project_data[0][12].replace('(', ' ').split()[0])
+print(project_data[0][12][0].replace('(', ' ').split()[0])
+print(project_data[0][12][1].replace('(', ' ').split()[0])
+print(project_data[0][13][1].replace('(', ' ').split()[0])
+runfile('C:/Users/B180093/.spyder-py3/profield_projectDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data_role)
+runfile('C:/Users/B180093/.spyder-py3/profield_projectDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Tue Apr 21 11:08:31 2020)---
+runfile('C:/Users/B180093/.spyder-py3/project_key_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/profield_projectDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Thu Apr 23 09:15:12 2020)---
+runfile('C:/Users/B180093/.spyder-py3/project_key_project_category_profield_data_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(url)
+print(day_before)
+print(day_last)
+print(today)
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(today)
+print(day)
+print(first_day)
+print(day_before)
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(first_day_1)
+print(last_day)
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(last_day)
 runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/allteam_resource_wikicreate2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_wikicreate2.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data_resource)
-total_time = worklog[worklog['team'] == team_code[0][0]]['time_spent'].sum()
-print(total_time)
-total_time = worklog[worklog['team'] == team_code[22][0]]['time_spent'].sum()
-print(total_time)
-total_time = worklog[worklog['team'] == team_code[22][0]]['time_spent'].sum()
-team_time = worklog[(worklog['team'] == team_code[22][0]) & (worklog['project_key'] == team_code[22][2])]['time_spent'].sum()
-tims_time = worklog[(worklog['team'] == team_code[22][0]) & (worklog['project_key'] == 'TIMS')]['time_spent'].sum()
-print(team_time)
-runfile('C:/Users/B180093/.spyder-py3/user_dataDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/allteam_resource_wikicreate2.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data[3]['id'])
-print(data[3]['key'])
-print(data[3]['field'])
-print(data[3]['fields'])
-print(data[3]['fields'][0])
-print(data[3]['fields'][0]['field'])
-print(data[3]['fields'][0]['field']['id'] = '-2')
-if data[3]['fields'][0]['field']['id'] == '-2':
-    print(data[3]['fields'][0]['field']['id'])
-if data[3]['fields'][0]['field']['id'] == '-2':
-    print(data[3]['fields'][0]['field']['name'])
-print(data[3]['fields'][0]['field']['name'])
-if data[3]['fields'][0]['field']['id'] == -2:
-    print(data[3]['fields'][0]['field']['name'])
-if data[3]['fields'][0]['field']['id'] != -2:
-    print(data[3]['fields'][0]['field']['name'])
-print(data[data[3]['fields'][0]['field']['id'] == -2]['name'])
-print(data[data[3]['fields'][0]['field']['id'] == -2])
-print(data[data[3]['fields'][0]['field']['id'] == -2]['name'])
-print(data[data[3]['fields'][0]['field']['id'] == -2]['id'])
-print(data[3]['fields'][0]['field']['id'] == -2)
-a=[]
-
-if data[3]['fields'][0]['field']['id'] == -2:
-    a.append(data[3]['fields'][0]['field']['name'])
-    a.append(data[3]['fields'][0]['value']['value'])
-
-
-print(a)
+print(url)
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(a)
-print(data[3]['fields'][0]['value']['value'])
+print(user)
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data[3]['fields'][8]['value']['value'])
+print(user_info)
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(type(data[3]['fields'][8]['value']['value']))
-print(type(data[3]['fields'][7]['value']['value']))
-print(data[3]['fields'][7]['value']['value'])
-print(data[3]['fields'][8]['value'])
-print(type(data[3]['fields'][8]['value']))
-print(type(str(data[3]['fields'][8]['value'])))
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Thu Apr 16 13:53:23 2020)---
-runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
-print(page_list)
-print(test_result_list)
-print(test_result)
-module_result = test_result.drop_duplicates(['Module_Name'], keep='last')
-print(module_result)
-print(module_result.values.tolist())
+runfile('C:/Users/B180093/.spyder-py3/project_key_project_category_profield_data_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/project_key_project_category_profield_data_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data_role)
+runfile('C:/Users/B180093/.spyder-py3/project_role_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data)
+runfile('C:/Users/B180093/.spyder-py3/project_role_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data_role)
+runfile('C:/Users/B180093/.spyder-py3/project_role_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data[3]['fields'][0]['value']['value'])
-print(data[3]['fields'][8]['value']['value'])
-print(data[3]['fields'][8]['value']['value'].get())
-print(data[3]['fields'][7]['value']['value'])
-print(data[3]['fields'][8]['value']['value'])
-print(data[3]['fields'][8]['value']['value'].items())
-print(data[3]['fields'][7]['value']['value'].items())
-print(data[3]['fields'][7]['value']['value'].get())
-print(type(data[3]['fields'][7]['value']['value']))
-print(type(data[3]['fields'][7]['value']))
-print(data[3]['fields'][7]['value'].items())
-print(data[3]['fields'][8]['value'].items())
-print(data[3]['fields'][8]['value'])
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_role)
 runfile('C:/Users/B180093/.spyder-py3/test2.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/project_role_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(project_data)
+print(type(data[i]['startDate']))
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(wiki_data_top + wiki_data_middle + wiki_data_bottom)
+print(type(data[0]))
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(project_data)
+print(data[0]['userReleaseDate'])
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/page_body_storage_info.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data2)
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(len(project_data[0]))
-print(len(project_data))
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(project_data[94])
-print(project_data[93])
-runfile('C:/Users/B180093/.spyder-py3/page_body_storage_info.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data1)
+print(data1[0])
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
 
-## ---(Fri Apr 17 11:10:48 2020)---
+## ---(Fri Apr 24 15:00:32 2020)---
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(project_data)
+runfile('C:/Users/B180093/.spyder-py3/project_role_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(project_data)
+print(data['roles'][5]['users']['displayName'])
+print(data['roles'][5]['users'][0]['displayName'])
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data[0]['versions'])
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(project)
 print(project_key)
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(type(url))
-print(type(url.text))
-data.append(url.text)
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data)
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(project_key[0])
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data)
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
