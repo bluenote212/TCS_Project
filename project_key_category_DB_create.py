@@ -3,15 +3,15 @@ import sqlite3
 import simplejson as json
 import pandas as pd
 
-#userdata를 가져와서 리스트로 변환
+#id_pw를 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 user = pd.read_sql("SELECT * FROM id_pw", con)
 user_info = user.values.tolist()
 con.close()
-userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
+id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 #모든 프로젝트의 카테고리 data 생성
-url = requests.get('https://tcs.telechips.com:8443/rest/api/2/project', userData)
+url = requests.get('https://tcs.telechips.com:8443/rest/api/2/project', id_pw)
 data = json.loads(url.text)
 
 projectCategory_list = []

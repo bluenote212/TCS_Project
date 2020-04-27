@@ -4,12 +4,12 @@ import simplejson as json
 from datetime import datetime
 import pandas as pd
 
-#userdata를 가져와서 리스트로 변환
+#id_pw를 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 user = pd.read_sql("SELECT * FROM id_pw", con)
 user_info = user.values.tolist()
 con.close()
-userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
+id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 #team code를 DB에서 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
@@ -38,7 +38,7 @@ for h in range(0, len(team_code)): #각 팀 반복
     for i in range(1, day.day):
         url = url1 + str(year) + '-' + str(month) + '-' + str(i) + url2 + str(year) + '-' + str(month) + '-' + str(i) + url3
         #월간 팀별 프로젝트 리소스
-        data1 = requests.get(url, userData)
+        data1 = requests.get(url, id_pw)
         data2 = json.loads(data1.text)
         for j in range(0, len(data2['projects'])):
             for k in range(0, len(data2['projects'][j]['issues'])):

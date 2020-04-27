@@ -4,12 +4,12 @@ import simplejson as json
 import pandas as pd
 from atlassian import Confluence
 
-#userdata를 가져와서 리스트로 변환
+#id_pw를 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 user = pd.read_sql("SELECT * FROM id_pw", con)
 user_info = user.values.tolist()
 con.close()
-userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
+id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 
 confluence = Confluence(
@@ -31,7 +31,7 @@ con.close()
 
 data = []
 for i in range(0, len(project_key)):
-    url = requests.get('https://tcs.telechips.com:8443/rest/profields/api/2.0/values/projects/' + str(project_key[i][0]) + '?calculated=true', userData)
+    url = requests.get('https://tcs.telechips.com:8443/rest/profields/api/2.0/values/projects/' + str(project_key[i][0]) + '?calculated=true', id_pw)
     data.append(json.loads(url.text))
 
 project_data = []

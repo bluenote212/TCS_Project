@@ -6,12 +6,12 @@ from dateutil.relativedelta import relativedelta
 import pandas as pd
 import calendar
 
-#userdata를 가져와서 리스트로 변환
+#id_pw를 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 user = pd.read_sql("SELECT * FROM id_pw", con)
 user_info = user.values.tolist()
 con.close()
-userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
+id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 #team code를 DB에서 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
@@ -32,7 +32,7 @@ month = day.month
 first_day = day.replace(day=1)
 
 #전 월을 출력
-first_day_1 = first_day - relativedelta(months=1) 
+first_day_1 = first_day - relativedelta(months=1)
 year_1 = first_day_1.year #전 월의 년도
 month_1 = first_day_1.month
 last_day = calendar.monthrange(year_1,month_1)[1]
@@ -47,7 +47,7 @@ for h in range(0, len(team_code)): #각 팀 반복
     for i in range(1, last_day+1):
         url = url1 + str(year_1) + '-' + str(month_1) + '-' + str(i) + url2 + str(year_1) + '-' + str(month_1) + '-' + str(i) + url3
         #월간 팀별 프로젝트 리소스
-        data1 = requests.get(url, userData)
+        data1 = requests.get(url, id_pw)
         data2 = json.loads(data1.text)
         for j in range(0, len(data2['projects'])):
             for k in range(0, len(data2['projects'][j]['issues'])):

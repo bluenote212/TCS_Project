@@ -3,12 +3,12 @@ import sqlite3
 import simplejson as json
 import pandas as pd
 
-#userdata를 가져와서 리스트로 변환
+#id_pw를 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 user = pd.read_sql("SELECT * FROM id_pw", con)
 user_info = user.values.tolist()
 con.close()
-userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
+id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 #project category table에서 category 선별해서 프로젝트 key를 가져 옴
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
@@ -19,7 +19,7 @@ con.close()
 #프로젝트 role data 생성
 data_role = []
 for i in range(0, len(project_key)):
-    url = requests.get('https://tcs.telechips.com:8443/rest/api/2/project/' + project_key[i][0] + '/role/10400' , userData) #sub_pl 추가
+    url = requests.get('https://tcs.telechips.com:8443/rest/api/2/project/' + project_key[i][0] + '/role/10400' , id_pw) #sub_pl 추가
     sub_pl = json.loads(url.text)
     if len(sub_pl['actors']) == 0:
         sub_temp = ''
@@ -31,7 +31,7 @@ for i in range(0, len(project_key)):
             else:
                 sub_temp += sub_pl['actors'][j]['displayName'].replace('(', ' ').split()[0] + ', '
 
-    url = requests.get('https://tcs.telechips.com:8443/rest/api/2/project/' + project_key[i][0] + '/role/10500' , userData) #rit 추가
+    url = requests.get('https://tcs.telechips.com:8443/rest/api/2/project/' + project_key[i][0] + '/role/10500' , id_pw) #rit 추가
     rit = json.loads(url.text)
     if len(rit['actors']) == 0:
         rit_temp = ''
