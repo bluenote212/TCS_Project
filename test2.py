@@ -23,20 +23,3 @@ data1 = json.loads(url.text)
 url2 = requests.get('https://tcs.telechips.com:8443/rest/api/2/search?jql=duedate%3Cnow()%20and%20fixVersion%3D10804&maxResults=1&fields=1', id_pw)
 data2 = json.loads(url2.text)
 '''
-
-#프로젝트 role data 생성
-project_role = []
-for i in range(0, len(project_key)):
-    url = requests.get('https://tcs.telechips.com:8443/rest/projectconfig/1/roles/' + project_key[i][0] , id_pw)
-    data = json.loads(url.text)
-    for j in range(0, len(data['roles'])):
-        if data['roles'][j]['id'] == 10500 and data['roles'][j]['total'] != 0:
-            rit = ''
-            for k in range(0, len(data['roles'][j]['users'])):
-                rit += data['roles'][j]['users'][k]['displayName']
-        if data['roles'][j]['id'] == 10400 and data['roles'][j]['total'] != 0:
-            sub = ''
-            for k in range(0, len(data['roles'][j]['users'])):
-                sub += data['roles'][j]['users'][k]['displayName']
-        project_role.append([project_key[i][0], rit, sub])
-

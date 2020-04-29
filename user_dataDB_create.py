@@ -8,7 +8,7 @@ con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 user = pd.read_sql("SELECT * FROM id_pw", con)
 user_info = user.values.tolist()
 con.close()
-userData = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
+id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 #Team code
 team_code = [
@@ -46,7 +46,7 @@ con.close()
 
 user_data = []
 for i in range(0, len(team_code)):
-    resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?includeInactiveUsers=false&groupname=' + team_code[i][3], userData)
+    resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?includeInactiveUsers=false&groupname=' + team_code[i][3], id_pw)
     data = json.loads(resource.text)
     c = team_code[i][0]
     for i in range(0, len(data['values'])):

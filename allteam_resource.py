@@ -4,7 +4,7 @@ from atlassian import Confluence
 import datetime
 
 #Wiki auth
-con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
+con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 user = pd.read_sql("SELECT * FROM id_pw", con)
 user_info = user.values.tolist()
 con.close()
@@ -46,7 +46,7 @@ team_list = [
 allteam_resource = {}
 #DB 연결하여 data import
 for i in range(0, len(team_list)):
-    con = sqlite3.connect('C:/Users/telechips/database/tcs.db')
+    con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
     resource = pd.read_sql("SELECT date, project, time FROM " + '"' + team_list[i] + '"' + " WHERE date > date('now', '-30 days')", con)
     con.close()
     project_list = list(resource['project'].drop_duplicates())
