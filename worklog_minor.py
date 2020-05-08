@@ -33,6 +33,7 @@ for i in range(0, len(rnd_user)):
     if worklog[worklog['worklog_author']== rnd_user.loc[i, 'name']]['time_spent'].sum() < 150:
         data.append([rnd_user.loc[i, 'team'], rnd_user.loc[i, 'name'], round(worklog[worklog['worklog_author']== rnd_user.loc[i, 'name']]['time_spent'].sum(),2)])
 
+
 #Wiki 페이지에 Data table 생성
 wiki_data_top = '<p class="auto-cursor-target"><br /></p><ac:structured-macro ac:name="table-excerpt" ac:schema-version="1" ac:macro-id="70b8954e-f54e-46e7-8b34-a176d7c406ee">\
 <ac:parameter ac:name="name">worklog_minor</ac:parameter><ac:rich-text-body><p class="auto-cursor-target"><br /></p><table><colgroup><col /><col /><col />\
@@ -52,8 +53,8 @@ wiki = wiki_data_top + wiki_data_middle + wiki_data_bottom
 wiki = wiki.replace("&","<p>&amp;</p>") #특수문자 & 치환
 
 confluence.update_page(
-        parent_id = 118854807,
-        page_id = 120320115,
+        parent_id = 42675555,
+        page_id = 122586911,
         title = 'worklog 평균 이하 입력',
         body = wiki,
         type='page',
