@@ -48,25 +48,14 @@ for i in range(0, len(pageid)):
                     table_text.append('none')
                 elif table_td[k].text == '참고자료명과 참고자료의 버전을 기입':
                     table_text.append('none')
-                #elif table_td[k].text == '':
-                    #table_text.append('none') #아무 값이 없는 부분을 none로 저장
+                elif table_td[k].text == '':
+                    table_text.append('-') #아무 값이 없는 부분을 -로 저장
                 else:
                     table_text.append(table_td[k].text.strip()) #테이블의 입력된 텍스트를 앞, 뒤 공백을 제거하고 저장
         table_text.append('https://wiki.telechips.com:8443/pages/viewpage.action?pageId=' + pageid[i])
         test_result.append(table_text) #페이지별로 추출한 데이터를 저장
     else:
-        continue
-
-error_page = [] #test_result에서 error가 발생하는 페이지 index를 저장할 리스트
-for i in range(0, len(test_result)):
-    if len(test_result[i]) != 25: #test_result 값 중 25개 이상의 값이 들어가 있는 항목 검색
-        error_page.append(i) #25개 이상 값이 들어가 있는 항목 index error_page에 저장
-
-error_page_body = ''
-for i in range(0, len(error_page)):
-    error_page_body = error_page_body + test_result[error_page[i]][-1] + '\n' #error 페이지 url을 error_page_body에 저장
-    del test_result[error_page[i]] #test_result에서 25개 이상 값이 들어가 있는 항목 삭제
-
+        continue 
 
 data = pd.DataFrame(test_result, columns = ['test_date','author','reference&revision', 'SDK_Name_Device', 'SDK_Name_Platform', 'SDK_Name_Application', 'Subtitle',\
                                             'Version', 'Test_Type', 'Module_Name', 'Module_subtitle', 'Module_Version', 'Pass', 'Fail', 'N/A', 'N/T', 'Total', 'Requirement_Cnt',\
@@ -133,14 +122,3 @@ confluence.update_page(
         type='page',
         representation='storage'
     )
-
-#error 페이지 리스트 페이지 생성
-confluence.update_page(
-        parent_id = 95455710,
-        page_id = 107807794,
-        title = '단위테스트 결과 error 페이지 리스트',
-        body = error_page_body,
-        type='page',
-        representation='storage'
-    )
-

@@ -1,7 +1,6 @@
 import sqlite3
 import pandas as pd
 from atlassian import Confluence
-from datetime import datetime
 
 #userdata를 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
@@ -18,13 +17,12 @@ confluence = Confluence(
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 rnd_user = pd.read_sql("SELECT * FROM userData", con)
 
-#현재 년도, 월을 출력
-day = datetime.now()
-month = day.month
+#검색할 월의 DB 이름을 입력
+month = 'RND_worklog_4_draft'
 
 #현재월의 worklog를 가져옴
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-worklog = pd.read_sql("SELECT * FROM RND_worklog_4", con)
+worklog = pd.read_sql('SELECT * FROM ' + month, con)
 con.close()
 
 #worklog 입력이 미흡한 인원 파악

@@ -53,7 +53,7 @@ con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 data.to_sql('version_data', con, if_exists='replace', index = False)
 con.close()
 
-#Wiki 페이지에 Project Data page 생성
+#Wiki 페이지에 version Data page 생성
 wiki_data_top = '<p class="auto-cursor-target"><br /></p><ac:structured-macro ac:name="table-excerpt" ac:schema-version="1" ac:macro-id="70b8954e-f54e-46e7-8b34-a176d7c406ee">\
 <ac:parameter ac:name="name">version_data</ac:parameter><ac:rich-text-body><p class="auto-cursor-target"><br /></p><table><colgroup><col /><col /><col /><col /><col /><col />\
 <col /><col /><col /><col /><col /></colgroup><tbody><tr><th>Key</th><th>Milestone_id</th><th>Milestone_name</th><th>Description</th><th>Milestone_start</th><th>Milestone_close</th><th>Release</th>\
@@ -61,7 +61,7 @@ wiki_data_top = '<p class="auto-cursor-target"><br /></p><ac:structured-macro ac
 wiki_data_middle = ''
 wiki_data_bottom = '</tbody></table><p class="auto-cursor-target"><br /></p></ac:rich-text-body></ac:structured-macro><p><br /></p>'
 
-#project_data 돌면서 table 생성
+#version data 돌면서 table 생성
 for i in range(0, len(version_data)):
     data_row = '<tr>'
     for j in range(0, len(version_data[i])):

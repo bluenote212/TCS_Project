@@ -15,7 +15,7 @@ msg = MIMEText('블라블라블라')
 msg['Subject'] = 'test'
  
 # 메일 보내기
-send_mail.sendmail('telechips.rnd.noti@gmail.com', ['mwlee@telechips.com', 'bluenote212@telechips.com'], msg.as_string())
+send_mail.sendmail('telechips.rnd.noti@gmail.com', ['mwlee@telechips.com', 'bluenote212@telechips.com', 'bluenote212@naver.com'], msg.as_string())
 
 # 세션 종료
 send_mail.quit()
