@@ -18,7 +18,7 @@ con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 rnd_user = pd.read_sql("SELECT * FROM userData", con)
 
 #검색할 월의 DB 이름을 입력
-month = 'RND_worklog_4_draft'
+month = 'RND_worklog_5_draft'
 
 #현재월의 worklog를 가져옴
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
@@ -28,8 +28,8 @@ con.close()
 #worklog 입력이 미흡한 인원 파악
 data = []
 for i in range(0, len(rnd_user)):
-    if worklog[worklog['worklog_author']== rnd_user.loc[i, 'name']]['time_spent'].sum() < 150:
-        data.append([rnd_user.loc[i, 'team'], rnd_user.loc[i, 'name'], round(worklog[worklog['worklog_author']== rnd_user.loc[i, 'name']]['time_spent'].sum(),2)])
+    if worklog[worklog['worklog_author']== rnd_user.loc[i, 'name']]['worklog_timespent'].sum() < 130:
+        data.append([rnd_user.loc[i, 'team'], rnd_user.loc[i, 'name'], round(worklog[worklog['worklog_author']== rnd_user.loc[i, 'name']]['worklog_timespent'].sum(),2)])
 
 
 #Wiki 페이지에 Data table 생성

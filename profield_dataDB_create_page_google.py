@@ -138,4 +138,4 @@ worksheet.insert_row(table.columns.tolist(),1)
 for i in range(0, len(table.values.tolist())):
     worksheet.insert_row(table.values.tolist()[i],i+2)
     time.sleep(2)
-worksheet.resize(len(table.values.tolist()), 16)
+worksheet.resize(len(table.values.tolist()), 4)

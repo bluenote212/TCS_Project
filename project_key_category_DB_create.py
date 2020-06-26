@@ -17,14 +17,15 @@ data = json.loads(url.text)
 projectCategory_list = []
 for i in range(0, len(data)):
     key = data[i]['key']
+    name = data[i]['name']
     if 'projectCategory' in data[i]:
         projectCategory = data[i]['projectCategory']['name']
     else:
         projectCategory = 'None'
-    data1 = [key, projectCategory]
+    data1 = [key, projectCategory, name]
     projectCategory_list.append(data1)
     
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data1 = pd.DataFrame(projectCategory_list, columns = ['project_key','category'])
+data1 = pd.DataFrame(projectCategory_list, columns = ['project_key','category', 'project_name'])
 data1.to_sql('project_key', con, if_exists='replace', index = False)
 con.close()

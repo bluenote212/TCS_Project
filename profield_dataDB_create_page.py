@@ -11,7 +11,6 @@ user_info = user.values.tolist()
 con.close()
 id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
-
 confluence = Confluence(
     url='https://wiki.telechips.com:8443',
     username = user_info[0][0],
@@ -109,9 +108,20 @@ for i in range(0, len(data)):
                 a.append('')
             else:
                 a.append(data[i][j]['value']['value'])
+        
+        if data[i][j]['field']['id'] == 49:#Platform
+            if data[i][j]['value'] is None:
+                a.append('')
+            else:
+                a.append(data[i][j]['value']['value']['value'])
+        
+        if data[i][j]['field']['id'] == 50:#Application
+            if data[i][j]['value'] is None:
+                a.append('')
+            else:
+                a.append(data[i][j]['value']['value']['value'])
 
     project_data.append(a)
-
 
 #project_data에 project_role 추가
 for i in range(0, len(project_data)):
@@ -121,29 +131,35 @@ for i in range(0, len(project_data)):
             project_data[i].append(project_role[j][2])
 
 
+
+data = pd.DataFrame(project_data, columns = ['project_name', 'project_key', 'pl', 'category', '종료보고', 'application', 'chip', 'project_close', 'kick_off', 'platform', 'timespent', 'project_start', 'status', 'wiki', 'sub_pl', 'rit'])
+con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+data.to_sql('project_data', con, if_exists='replace', index = False)
+con.close()
+
 #Wiki 페이지에 Project Data page 생성
 wiki_data_top = '<p class="auto-cursor-target"><br /></p><ac:structured-macro ac:name="table-excerpt" ac:schema-version="1" ac:macro-id="70b8954e-f54e-46e7-8b34-a176d7c406ee">\
-<ac:parameter ac:name="name">project_data</ac:parameter><ac:rich-text-body><p class="auto-cursor-target"><br /></p><table><colgroup><col /><col /><col /><col /><col /><col />\
-<col /><col /><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><th>Project_name</th><th>Key</th><th>PL</th><th>Category</th><th>종료보고</th><th>Chip</th><th>Project_close</th>\
-<th>Kick_off</th><th>Time_spent</th><th>Project_start</th><th>Status</th><th>Wiki</th><th>Sub_PL</th><th>RIT</th></tr>'
+<ac:parameter ac:name="name">project_data</ac:parameter><ac:rich-text-body><p class="auto-cursor-target"><br /></p><table><colgroup><col /><col /><col /><col /><col /><col /><col /><col />\
+<col /><col /><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><th>Project_name</th><th>Key</th><th>PL</th><th>Category</th><th>종료보고</th><th>Application</th><th>Chip</th><th>Project_close</th>\
+<th>Kick_off</th><th>Platform</th><th>Time_spent</th><th>Project_start</th><th>Status</th><th>Wiki</th><th>Sub_PL</th><th>RIT</th></tr>'
 wiki_data_middle = ''
 wiki_data_bottom = '</tbody></table><p class="auto-cursor-target"><br /></p></ac:rich-text-body></ac:structured-macro><p><br /></p>'
 
 #project_data 돌면서 table 생성
 for i in range(0, len(project_data)):
     data_row = '<tr>'
-    for j in range(0,14):
+    for j in range(0, 16):
         if j == 0: #Name에 link
             data_row += '<td><a href="https://tcs.telechips.com:8443/projects/' + project_data[i][1] + '/summary/statistics">' + project_data[i][j] + '</a></td>'
         elif j == 2 and project_data[i][j] != '': #PL 이름 입력
             data_row += '<td>' + project_data[i][j] + '</td>'
         elif j == 4 and project_data[i][j] != '': #종료보고에 link
             data_row += '<td><a href="' + project_data[i][j] + '">' + project_data[i][1] + '</a></td>'
-        elif j == 7 and project_data[i][j] != '': #kick_off에 link
+        elif j == 8 and project_data[i][j] != '': #kick_off에 link
             data_row += '<td><a href="' + project_data[i][j] + '">' + project_data[i][1] + '</a></td>'
-        elif j == 11 and project_data[i][j] != '': #Wiki에 link
+        elif j == 13 and project_data[i][j] != '': #Wiki에 link
             data_row += '<td><a href="' + project_data[i][j] + '">' + project_data[i][1] + '</a></td>'
-        elif (j == 12 or 13) and project_data[i][j] != '': #role 입력
+        elif (j == 14 or 15) and project_data[i][j] != '': #role 입력
             temp = ''
             for k in range(0, len(project_data[i][j])):
                 temp += project_data[i][j][k]

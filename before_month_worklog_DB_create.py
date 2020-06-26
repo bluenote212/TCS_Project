@@ -36,6 +36,7 @@ last_day = calendar.monthrange(year_1,month_1)[1] #전월의 마지막 날짜를
 
 #각 팀 리소스 data 생성
 data_resource = []
+parent = []
 for h in range(0, len(team_code)): #각 팀 반복
     url1 = 'https://tcs.telechips.com:8443/rest/com.deniz.jira.worklog/1.0/timesheet/team?startDate='
     url2 = '&endDate='
@@ -50,10 +51,14 @@ for h in range(0, len(team_code)): #각 팀 반복
                 issue_type = data2['projects'][j]['issues'][k]['type']
                 summary = data2['projects'][j]['issues'][k]['summary']#summary추가
                 
-                if len(data2['projects'][j]['issues'][k]['customFields']) == 0: #customfield chip 항목을 구하기 위한 조건
-                    issue_chip = ''
-                else:
+                if 'customfield_11101' in data2['projects'][j]['issues'][k]['customFields'].keys(): #customfield chip 항목을 구하기 위한 조건
                     issue_chip = data2['projects'][j]['issues'][k]['customFields']['customfield_11101']['values'][0]#chip추가
+                else:
+                    issue_chip = ''
+                if 'customfield_11400' in data2['projects'][j]['issues'][k]['customFields'].keys(): #customfield 회의종류 항목을 구하기 위한 조건
+                    issue_meeting = data2['projects'][j]['issues'][k]['customFields']['customfield_11400']['values'][0]#회의종류추가
+                else:
+                    issue_meeting = ''
     
                 subtask = data2['projects'][j]['issues'][k]['subtask']
                 
@@ -87,8 +92,20 @@ for h in range(0, len(team_code)): #각 팀 반복
                                 worklog_attr_value = ''
                     a = [data2['projects'][j]['name'], data2['projects'][j]['key'], issue_key, issue_type, summary, issue_chip, subtask, parent_key, parent_type, reporter,\
                         assignee, issue_created, duedate, round(issue_timeSpent/60/60, 2), workstart, worklogcreated, round(worklog_timespent/60/60, 2), team_code[h][0],\
-                        worklog_author, worklog_comment, worklog_attr, worklog_attr_value]
+                        worklog_author, worklog_comment, worklog_attr, worklog_attr_value, issue_meeting]
                     data_resource.append(a) #data_resource에 각 워크로그 a를 추가
+
+        for n in range(0, len(data2['parentIssues'])): #parent issue의 key, type, 개발/비개발 Field 저장
+            a_key = data2['parentIssues'][n]['key']
+            a_type = data2['parentIssues'][n]['type']
+            if 'customfield_11400' in data2['parentIssues'][n]['customFields'].keys():
+                a_meet = data2['parentIssues'][n]['customFields']['customfield_11400']['values'][0]
+            else:
+                a_meet = ''
+            parent.append([a_key, a_type, a_meet])
+
+parent = pd.DataFrame(parent, columns = ['issue_key', 'issue_type', 'issue_meeting']) #parent 리스트 DataFrame로 변환
+parent = parent.drop_duplicates(['issue_key'], keep='last') #중복값 저장
 
 #project category 추가
 for i in range(0,len(data_resource)):
@@ -115,10 +132,18 @@ for i in range(0, len(data_resource)):
     else:
         del data_resource[i][21]
 
+#parent Issue의 회의종류 Field를 sub-task와 매칭
+parent_list = parent.values.tolist() #parent DataFrame을 리스트로 변환
+for i in range(0, len(data_resource)): #비교
+    for j in range(0, len(parent_list)):
+        if data_resource[i][8] == parent_list[j][0]:
+            data_resource[i][22] = parent_list[j][2]
+
+
 #dataframe 형식으로 변환
 data = pd.DataFrame(data_resource, columns = ['project_name', 'project_key', 'project_category', 'issue_key', 'issue_type', 'summary', 'issue_chip', 'subtask', 'parent_key',\
                                               'parent_type', 'reporter', 'assignee', 'issue_created', 'duedate', 'issue_timespent', 'workstart', 'worklogcreated',\
-                                              'worklog_timespent', 'team', 'worklog_author', 'worklog_comment', 'worklog_chip'])
+                                              'worklog_timespent', 'team', 'worklog_author', 'worklog_comment', 'worklog_chip', 'issue_meeting'])
 
 #table 생성
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')

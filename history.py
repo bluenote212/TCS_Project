@@ -1,106 +1,116 @@
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-user = pd.read_sql("SELECT * FROM id_pw", con)
-user_info = user.values.tolist()
-con.close()
-id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
-#team code를 DB에서 가져와서 리스트로 변환
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-team_code = pd.read_sql("SELECT * FROM team_code", con)
-con.close()
-team_code = team_code.values.tolist()
+## ---(Fri Jun  5 10:58:09 2020)---
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/worklog_RnDdashboard_dataDBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
 
-#project info를 가져와서 리스트로 변환
-con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data2 = pd.read_sql("SELECT * FROM project_key", con)
-con.close()
-project_key = data2.values.tolist()
-
-#검증하고 싶은 년, 월을 지정
-days_start = '2020-04-1'
-days_end = '2020-04-30'
-
-#현재 월의 첫째날을 출력
-day = datetime.now()
-first_day = day.replace(day=1)
-
-#전 월의 년도, 월, 첫째날, 마지막 날을 출력
-first_day_1 = first_day - relativedelta(months=1)
-year_1 = first_day_1.year #전 월의 년도
-month_1 = first_day_1.month
-last_day = calendar.monthrange(year_1,month_1)[1]
-
-print(year_1)
-print(month_1)
-print(first_day_1)
-print(last_day)
-runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/before_month_worklog_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data['worklog_timespent'].sum())
-print(len(data_resource))
-runfile('C:/Users/B180093/.spyder-py3/before_month_worklog_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-print(url)
-runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
-print(url_1)
+## ---(Tue Jun  9 17:17:16 2020)---
 runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(len(data))
-runfile('C:/Users/B180093/.spyder-py3/before_month_worklog_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-print(len(data))
-print(data['worklog_timespent'].sum())
-runfile('C:/Users/B180093/.spyder-py3/before_month_worklog_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
 
-## ---(Fri May 22 09:20:29 2020)---
-runfile('C:/Users/B180093/.spyder-py3/before_month_worklog_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-print(len(data_resource[0]))
-print(data_resource[0])
-runfile('C:/Users/B180093/.spyder-py3/before_month_worklog_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data_resource[0])
-print(len(data_resource[0]))
-runfile('C:/Users/B180093/.spyder-py3/before_month_worklog_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Mon May 25 16:30:07 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(team_code.index[0])
-print(team_code.index[1])
-print(team_code.index)
-print(team_code.index(0))
-print(team_code.loc[0]
-print(team_code.loc[0])
-print(team_code.loc[0]['issue_dhip'])
-print(team_code.loc[0]['issue_chip'])
-print(team_code.loc[0])
-print(team_code.loc[16])
-print(team_code.loc[15])
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(team_code[15]['issue_chip'])
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-
-## ---(Tue May 26 11:35:42 2020)---
-runfile('C:/Users/B180093/.spyder-py3/month_worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/worklogdata_recalculate.py', wdir='C:/Users/B180093/.spyder-py3')
+## ---(Wed Jun 10 11:39:28 2020)---
 runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
-runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/module_result.py', wdir='C:/Users/B180093/.spyder-py3')
 
-## ---(Wed May 27 10:14:37 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data_resource[data_resource['auto/ce'] == 'ce'])
-print(data_resource[data_resource['resource_category'] == '기타'])
-print(data_resource[data_resource['auto/ce'] == 'auto'])
-runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data_resource[data_resource['auto_ce'] == 'ce'])
-print(data_resource[data_resource['resource_category'] == '기타'])
-print(data_resource[data_resource['resource_category'] == '개발'])
-print(data_resource[data_resource['resource_category'] == '지원'])
-runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
+## ---(Wed Jun 10 14:02:27 2020)---
+runfile('C:/Users/B180093/.spyder-py3/month_worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
+print(parent)
+print(parent.iloc[0])
+print(parent.iloc[0]['issue_key'])
+runfile('C:/Users/B180093/.spyder-py3/month_worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
+print(parent[parent['issue_key'] == data_resource[i][8]]['issue_meeting'])
+print(parent[parent['issue_key'] == data_resource[i][8]])
+print(parent[parent['issue_key'] == 'TMTD-1455']['issue_meeting'])
+print(parent.iloc(0))
+print(parent.iloc())
+print(parent.iloc()[0])
+print(parent.iloc()[0][0])
+runfile('C:/Users/B180093/.spyder-py3/month_worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
+print(parent)
+
+## ---(Thu Jun 11 09:16:39 2020)---
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Tue Jun 16 11:23:11 2020)---
+runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Thu Jun 18 11:24:00 2020)---
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(year)
+print(month)
+print(day.day)
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/page_body_storage_info.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test4.py', wdir='C:/Users/B180093/.spyder-py3')
+print(resource['worklogAuthors'])
+
+## ---(Fri Jun 19 14:26:43 2020)---
+runfile('C:/Users/B180093/.spyder-py3/test4.py', wdir='C:/Users/B180093/.spyder-py3')
+print(url3)
+runfile('C:/Users/B180093/.spyder-py3/test4.py', wdir='C:/Users/B180093/.spyder-py3')
+print(worklog_timespent)
+print(worklog_timespent/60/60)
+print(round(worklog_timespent/60/60, 2))
+runfile('C:/Users/B180093/.spyder-py3/test4.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Fri Jun 19 17:00:42 2020)---
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data)
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Mon Jun 22 20:30:45 2020)---
 runfile('C:/Users/B180093/.spyder-py3/month_worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
 
-## ---(Wed May 27 13:10:36 2020)---
-runfile('C:/Users/B180093/.spyder-py3/month_worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
+## ---(Tue Jun 23 10:03:15 2020)---
+runfile('C:/Users/B180093/.spyder-py3/version_dataDB_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(month[0])
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(version[5]['startDate']['formatted'])
+print(version[0]['startDate']['formatted'])
 runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data_resource.columns)
+version[0]['startDate']['formatted']
 runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+print(month.lstrip())
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test3.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/profield_dataDB_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/project_role_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/profield_dataDB_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_data)
+runfile('C:/Users/B180093/.spyder-py3/profield_dataDB_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_data)
+runfile('C:/Users/B180093/.spyder-py3/profield_dataDB_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
+print(project_data)
+runfile('C:/Users/B180093/.spyder-py3/profield_dataDB_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
 
-## ---(Fri May 29 10:57:02 2020)---
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
-print(data['issues'][0])
-runfile('C:/Users/B180093/.spyder-py3/test.py', wdir='C:/Users/B180093/.spyder-py3')
+## ---(Wed Jun 24 17:44:13 2020)---
+runfile('C:/Users/B180093/.spyder-py3/profield_dataDB_create_page.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Fri Jun 26 09:48:38 2020)---
+runfile('C:/Users/B180093/.spyder-py3/module_result.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/unit_test_origindata2.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/module_result.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Fri Jun 26 11:45:30 2020)---
+runfile('C:/Users/B180093/.spyder-py3/before_month_worklog_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+data = pd.DataFrame(data_resource, columns = ['project_name', 'project_key', 'project_category', 'issue_key', 'issue_type', 'summary', 'issue_chip', 'subtask', 'parent_key',\
+                                              'parent_type', 'reporter', 'assignee', 'issue_created', 'duedate', 'issue_timespent', 'workstart', 'worklogcreated',\
+                                              'worklog_timespent', 'team', 'worklog_author', 'worklog_comment', 'worklog_chip', 'issue_meeting'])
+
+#table 생성
+con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+data.to_sql('RND_worklog_' + str(month_1), con, if_exists='replace', index = False)
+con.close()
+print(month_1)
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/before_month_worklog_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')

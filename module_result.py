@@ -15,10 +15,22 @@ confluence = Confluence(
 
 #DB에서 값을 불러옴
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-test_result = pd.read_sql("SELECT * FROM Unit_test3", con)
+sql = "SELECT * FROM Unit_test3 WHERE Module_Name != 'BT' \
+UNION \
+SELECT * FROM Unit_test3 WHERE Module_Name == 'BT' AND SDK_Name_Platform == 'Linux' ORDER BY Module_Name"
+
+test_result = pd.read_sql(sql, con)
 con.close()
 
-module_result = test_result[test_result['test_date'] != 'none'].drop_duplicates(['Module_Name'], keep='last')
+#모듈 결과 중 date가 없는 것과 MF만 별도 분리
+module_result = test_result[(test_result['test_date'] != 'none') & (test_result['Module_Name'] != 'MF')].drop_duplicates(['Module_Name'], keep='last')
+
+#MF 모듈 결과에서 subtitle까지 비교해서 중복값제거
+mf_result = test_result[test_result['Module_Name'] == 'MF'].drop_duplicates(['Module_subtitle'], keep='last')
+
+#module_result에 mf_result 추가
+module_result = module_result.append(mf_result)
+
 
 #DataFrame을 리스트로 변환
 test_result_list = module_result.values.tolist()
