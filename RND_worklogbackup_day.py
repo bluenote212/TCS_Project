@@ -73,7 +73,7 @@ for h in range(0, len(team_code)): #각 팀 반복
                 issue_resource += data2['projects'][j]['issues'][k]['workLogs'][l]['timeSpent']
                 worklog_author = data2['projects'][j]['issues'][k]['workLogs'][l]['authorName']
                 worklog_comment = data2['projects'][j]['issues'][k]['workLogs'][l]['comment']#worklog comment추가
-                if data2['projects'][j]['issues'][k]['workLogs'][l]['workLogAttributes'] != 0:
+                if len(data2['projects'][j]['issues'][k]['workLogs'][l]['workLogAttributes']) != 0:
                     for m in range(0, len(data2['projects'][j]['issues'][k]['workLogs'][l]['workLogAttributes'])):
                         if data2['projects'][j]['issues'][k]['workLogs'][l]['workLogAttributes'][m]['attrTypeId'] == 2:
                             worklog_Attr = data2['projects'][j]['issues'][k]['workLogs'][l]['workLogAttributes'][m]['attrTypeId']#attr ID추가
@@ -81,6 +81,9 @@ for h in range(0, len(team_code)): #각 팀 반복
                         else:
                             worklog_Attr = ''
                             worklog_Attr_value = ''
+                else:
+                    worklog_Attr = ''
+                    worklog_Attr_value = ''
                 date_yesterday = str(year) + '-' + str(month) + '-' + str(yesterday.day)
                 a = [date_yesterday ,data2['projects'][j]['name'], data2['projects'][j]['key'], issue_key, issue_type, issue_summary, issue_chip, issue_subtask, issue_parent_key,\
                     issue_parent_type, issue_reporter, issue_assignee, issue_created, issue_dueDate, issue_timeSpent, issue_worklogCreated, issue_worklogUpdated, round(issue_resource/60/60,2),\

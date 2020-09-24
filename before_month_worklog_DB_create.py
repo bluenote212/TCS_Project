@@ -40,7 +40,7 @@ parent = []
 for h in range(0, len(team_code)): #각 팀 반복
     url1 = 'https://tcs.telechips.com:8443/rest/com.deniz.jira.worklog/1.0/timesheet/team?startDate='
     url2 = '&endDate='
-    url3 = '&targetKey=' + team_code[h][1] + '&extraField=customfield_11101&extraIssueFilter=issuetype%20not%20in%20(Schedule%2C%22Meeting%20Minutes%22)'
+    url3 = '&targetKey=' + team_code[h][1] + '&extraField=customfield_11101&extraField=customfield_11400&extraIssueFilter=issuetype%20not%20in%20(Schedule%2C"Meeting%20Minutes")'
     for i in range(1, last_day+1): #하루의 워크로그를 구함, 한달 worklog를 한꺼번에 request하면 모두 response되지않음
         url = url1 + str(year_1) + '-' + str(month_1) + '-' + str(i) + url2 + str(year_1) + '-' + str(month_1) + '-' + str(i) + url3
         data1 = requests.get(url, id_pw)
@@ -105,7 +105,7 @@ for h in range(0, len(team_code)): #각 팀 반복
             parent.append([a_key, a_type, a_meet])
 
 parent = pd.DataFrame(parent, columns = ['issue_key', 'issue_type', 'issue_meeting']) #parent 리스트 DataFrame로 변환
-parent = parent.drop_duplicates(['issue_key'], keep='last') #중복값 저장
+parent = parent.drop_duplicates(['issue_key'], keep='last') #중복값 삭제
 
 #project category 추가
 for i in range(0,len(data_resource)):
@@ -139,7 +139,6 @@ for i in range(0, len(data_resource)): #비교
         if data_resource[i][8] == parent_list[j][0]:
             data_resource[i][22] = parent_list[j][2]
 
-
 #dataframe 형식으로 변환
 data = pd.DataFrame(data_resource, columns = ['project_name', 'project_key', 'project_category', 'issue_key', 'issue_type', 'summary', 'issue_chip', 'subtask', 'parent_key',\
                                               'parent_type', 'reporter', 'assignee', 'issue_created', 'duedate', 'issue_timespent', 'workstart', 'worklogcreated',\
@@ -147,5 +146,5 @@ data = pd.DataFrame(data_resource, columns = ['project_name', 'project_key', 'pr
 
 #table 생성
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data.to_sql('RND_worklog_' + str(month_1), con, if_exists='replace', index = False)
+data.to_sql('RND_worklog_' + str(month_1) + '_draft_ttt', con, if_exists='replace', index = False)
 con.close()

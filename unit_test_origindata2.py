@@ -2,6 +2,8 @@ from atlassian import Confluence
 from bs4 import BeautifulSoup
 import pandas as pd
 import sqlite3
+#import smtplib
+#from email.mime.text import MIMEText
 
 #Wiki auth
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
@@ -33,6 +35,7 @@ for i in range(0, len(page_list)):
     pageid.append(page_list[i]['content']['id'])
 
 #검색한 ID로 각 페이지에 접근하여 최초 2개의 table에서 원하는 텍스트만 저장
+table_error = [] #에러페이지를 저장하기 위한 리스트
 for i in range(0, len(pageid)):
     page_info_body1 = confluence.get_page_by_id(pageid[i], expand='body.storage')
     soup = BeautifulSoup(page_info_body1['body']['storage']['value'],'html.parser')
@@ -53,10 +56,12 @@ for i in range(0, len(pageid)):
                 else:
                     table_text.append(table_td[k].text.strip()) #테이블의 입력된 텍스트를 앞, 뒤 공백을 제거하고 저장
         table_text.append('https://wiki.telechips.com:8443/pages/viewpage.action?pageId=' + pageid[i])
-        test_result.append(table_text) #페이지별로 추출한 데이터를 저장
+        if len(table_text) == 25:
+            test_result.append(table_text) #페이지별로 추출한 데이터를 저장
+        else:
+            table_error.append(table_text)
     else:
-        continue 
-
+        continue
 data = pd.DataFrame(test_result, columns = ['test_date','author','reference&revision', 'SDK_Name_Device', 'SDK_Name_Platform', 'SDK_Name_Application', 'Subtitle',\
                                             'Version', 'Test_Type', 'Module_Name', 'Module_subtitle', 'Module_Version', 'Pass', 'Fail', 'N/A', 'N/T', 'Total', 'Requirement_Cnt',\
                                             'Requirement_Coverage', 'Codesonar_결함수', '수정불가_Codesonar_결함수', 'QAC_결함수', '수정불가_QAC_결함수', '전체코드라인수', 'URL'])

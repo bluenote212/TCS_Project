@@ -21,9 +21,9 @@ con.close()
 team_code = team_code.values.tolist()
 
 #월별 리소스 DB를 가져와서 데이터 가공 해당 월 입력 data 변수 수정, DB Table 이름 수정 !!!!!------------------------------------------------------------------------------------------!!!!!!!!!!!!!
-date = '20200531'
+date = '20200830'
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data_resource = pd.read_sql("SELECT * FROM RND_worklog_5", con)
+data_resource = pd.read_sql("SELECT * FROM RND_worklog_8_draft", con)
 con.close()
 #----------------------------------------------------------------------------------------------------------------------------
 
@@ -59,11 +59,12 @@ for i in range(0, len(team_code)):
         data_resource[((data_resource['project_key'] == team_code[i][2]) & (data_resource['issue_type'] == 'Sub-task') & (data_resource['parent_type'] == 'Task'))]['worklog_timespent'].sum()
         #팀 프로젝트의 회의(개발) data 생성
         meet_dev = data_resource[((data_resource['project_key'] == team_code[i][2]) & (data_resource['issue_type'] == '회의') & (data_resource['issue_meeting'] == '개발회의'))]['worklog_timespent'].sum() +\
-        data_resource[((data_resource['project_key'] == team_code[i][2]) & (data_resource['issue_type'] == 'Sub-task') & (data_resource['parent_type'] == '회의'))]['worklog_timespent'].sum()
+        data_resource[((data_resource['project_key'] == team_code[i][2]) & (data_resource['issue_type'] == 'Sub-task') & (data_resource['parent_type'] == '회의') & (data_resource['issue_meeting'] == '개발회의'))]['worklog_timespent'].sum()
         #R&D 개발 프로젝트 data 생성
         dev = develop[develop['team'] == team_code[i][0]]['worklog_timespent'].sum() + qul + meet_dev + task
         #지원 data 생성
-        tims = data_resource[(data_resource['project_key'] == 'TIMS') & (data_resource['team'] == team_code[i][0])]['worklog_timespent'].sum()
+        tims = data_resource[(data_resource['issue_type'] == 'TIMS') & (data_resource['team'] == team_code[i][0])]['worklog_timespent'].sum() + \
+        data_resource[(data_resource['parent_type'] == 'TIMS') & (data_resource['team'] == team_code[i][0]) & (data_resource['issue_type'] == 'Sub-task')]['worklog_timespent'].sum()
         #etc data 생성
         etc = data_resource[(data_resource['project_category'] == 'RnD-팀 프로젝트') & (data_resource['team'] == team_code[i][0])]['worklog_timespent'].sum() +\
         data_resource[(data_resource['project_category'] == 'RnD-Group 프로젝트') & (data_resource['team'] == team_code[i][0])]['worklog_timespent'].sum() - qul - meet_dev - task
@@ -76,11 +77,12 @@ for i in range(0, len(team_code)):
         data_resource[((data_resource['project_key'] == team_code[i][2]) & (data_resource['issue_type'] == 'Sub-task') & (data_resource['parent_type'] == '품질'))]['worklog_timespent'].sum()
         #팀 프로젝트의 회의(개발) data 생성
         meet_dev = data_resource[((data_resource['project_key'] == team_code[i][2]) & (data_resource['issue_type'] == '회의') & (data_resource['issue_meeting'] == '개발회의'))]['worklog_timespent'].sum() +\
-        data_resource[((data_resource['project_key'] == team_code[i][2]) & (data_resource['issue_type'] == 'Sub-task') & (data_resource['parent_type'] == '회의'))]['worklog_timespent'].sum()
+        data_resource[((data_resource['project_key'] == team_code[i][2]) & (data_resource['issue_type'] == 'Sub-task') & (data_resource['parent_type'] == '회의') & (data_resource['issue_meeting'] == '개발회의'))]['worklog_timespent'].sum()
         #R&D 개발 프로젝트 data 생성
         dev = develop[develop['team'] == team_code[i][0]]['worklog_timespent'].sum() + qul + meet_dev
         #지원 data 생성
-        tims = data_resource[(data_resource['project_key'] == 'TIMS') & (data_resource['team'] == team_code[i][0])]['worklog_timespent'].sum()
+        tims = data_resource[(data_resource['issue_type'] == 'TIMS') & (data_resource['team'] == team_code[i][0])]['worklog_timespent'].sum() + \
+        data_resource[(data_resource['parent_type'] == 'TIMS') & (data_resource['team'] == team_code[i][0]) & (data_resource['issue_type'] == 'Sub-task')]['worklog_timespent'].sum()
         
         etc = data_resource[(data_resource['project_category'] == 'RnD-팀 프로젝트') & (data_resource['team'] == team_code[i][0])]['worklog_timespent'].sum() +\
         data_resource[(data_resource['project_category'] == 'RnD-Group 프로젝트') & (data_resource['team'] == team_code[i][0])]['worklog_timespent'].sum() - qul - meet_dev

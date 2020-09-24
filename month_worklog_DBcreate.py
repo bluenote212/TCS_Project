@@ -26,17 +26,11 @@ project_key = data2.values.tolist()
 #현재 날짜 출력
 day = datetime.now()
 
-# 자동 전 월의 년도, 월, 첫째날, 마지막 날을 출력
-#first_day1 = day - relativedelta(months=1)
-#year_1 = first_day1.year #전 월의 년도
-#month_1 = first_day1.month
-#last_day = calendar.monthrange(year_1,month_1)[1] #전월의 마지막 날짜를 출력
 
 # 자동 전 월의 년도, 월, 첫째날, 마지막 날을 출력
 year_1 = 2020 #전 월의 년도
-month_1 = 5
-last_day = 31 #전월의 마지막 날짜를 출력
-
+month_1 = 9
+last_day = 24 #전월의 마지막 날짜를 출력
 
 #각 팀 리소스 data 생성
 data_resource = []
@@ -45,6 +39,7 @@ for h in range(0, len(team_code)): #각 팀 반복
     url1 = 'https://tcs.telechips.com:8443/rest/com.deniz.jira.worklog/1.0/timesheet/team?startDate='
     url2 = '&endDate='
     url3 = '&targetKey=' + team_code[h][1] + '&extraField=customfield_11101&extraField=customfield_11400&extraIssueFilter=issuetype%20not%20in%20(Schedule%2C%22Meeting%20Minutes%22)'
+    print(team_code[h][0])
     for i in range(1, last_day+1): #하루의 워크로그를 구함, 한달 worklog를 한꺼번에 request하면 모두 response되지않음
         url = url1 + str(year_1) + '-' + str(month_1) + '-' + str(i) + url2 + str(year_1) + '-' + str(month_1) + '-' + str(i) + url3
         data1 = requests.get(url, id_pw)
@@ -109,7 +104,7 @@ for h in range(0, len(team_code)): #각 팀 반복
             parent.append([a_key, a_type, a_meet])
 
 parent = pd.DataFrame(parent, columns = ['issue_key', 'issue_type', 'issue_meeting']) #parent 리스트 DataFrame로 변환
-parent = parent.drop_duplicates(['issue_key'], keep='last') #중복값 저장
+parent = parent.drop_duplicates(['issue_key'], keep='last') #중복값 삭제
 
 #project category 추가
 for i in range(0,len(data_resource)):
@@ -150,5 +145,5 @@ data = pd.DataFrame(data_resource, columns = ['project_name', 'project_key', 'pr
 
 #table 생성
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data.to_sql('RND_worklog_' + str(month_1) + 'draft1', con, if_exists='replace', index = False)
+data.to_sql('RND_worklog_' + str(month_1) + 'tttt', con, if_exists='replace', index = False)
 con.close()

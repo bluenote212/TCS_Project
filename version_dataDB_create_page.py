@@ -22,8 +22,8 @@ day = datetime.now()
 year = day.year
 month = day.month
 
-status_release = '<ac:structured-macro ac:name="status" ac:schema-version="1" ac:macro-id="ef71acd3-1ae0-4eda-99b2-11e0aee72d0e"><ac:parameter ac:name="colour">Green</ac:parameter><ac:parameter ac:name="title">release</ac:parameter><ac:parameter ac:name="" /></ac:structured-macro>'
-status_unrelease = '<ac:structured-macro ac:name="status" ac:schema-version="1" ac:macro-id="7570780e-a96c-465c-8f7e-acf4245eb381"><ac:parameter ac:name="colour">Blue</ac:parameter><ac:parameter ac:name="title">unlease</ac:parameter><ac:parameter ac:name="" /></ac:structured-macro>'
+status_release = '<ac:structured-macro ac:name="status" ac:schema-version="1" ac:macro-id="ef71acd3-1ae0-4eda-99b2-11e0aee72d0e"><ac:parameter ac:name="colour">Blue</ac:parameter><ac:parameter ac:name="title">release</ac:parameter><ac:parameter ac:name="" /></ac:structured-macro>'
+status_unrelease = '<ac:structured-macro ac:name="status" ac:schema-version="1" ac:macro-id="7570780e-a96c-465c-8f7e-acf4245eb381"><ac:parameter ac:name="colour">Yellow</ac:parameter><ac:parameter ac:name="title">unrelease</ac:parameter><ac:parameter ac:name="" /></ac:structured-macro>'
 status_archived = '<ac:structured-macro ac:name="status" ac:schema-version="1" ac:macro-id="6242d969-7110-49d8-9898-cf5e37aa02e4"><ac:parameter ac:name="colour">Grey</ac:parameter><ac:parameter ac:name="title">archived</ac:parameter><ac:parameter ac:name="" /></ac:structured-macro>'
 
 version_data = []

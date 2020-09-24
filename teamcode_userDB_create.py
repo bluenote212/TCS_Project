@@ -50,13 +50,13 @@ for i in range(0, len(team_code)):
     data = json.loads(resource.text)
     c = team_code[i][0]
     for i in range(0, len(data['values'])):
-        a = data['values'][i]['key']
-        b = data['values'][i]['displayName']
+        a = data['values'][i]['displayName']
+        b = data['values'][i]['key']        
         d = data['values'][i]['emailAddress']
         user_data.append([a,b,c,d])
         
 #user_data의 값을 DB에 저장
-table = pd.DataFrame(user_data, columns=['employee_No', 'name', 'team', 'email'])
+table = pd.DataFrame(user_data, columns=['name', 'employee_No', 'team', 'email'])
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 table.to_sql('userData', con, if_exists='replace', index=False)
 con.close()

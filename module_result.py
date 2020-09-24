@@ -15,25 +15,17 @@ confluence = Confluence(
 
 #DB에서 값을 불러옴
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-sql = "SELECT * FROM Unit_test3 WHERE Module_Name != 'BT' \
-UNION \
-SELECT * FROM Unit_test3 WHERE Module_Name == 'BT' AND SDK_Name_Platform == 'Linux' ORDER BY Module_Name"
+sql = "SELECT * FROM Unit_test4 WHERE Module_Name != 'BT' AND Module_Name != 'DAB' AND Module_Name != 'HWC' AND Module_Name != 'Graphic'\
+UNION SELECT * FROM Unit_test4 WHERE Module_Name == 'BT' AND SDK_Name_Platform == 'Linux' \
+UNION SELECT * FROM Unit_test4 WHERE Module_Name == 'HWC' AND Module_subtitle == 'v2.x' \
+UNION SELECT * FROM Unit_test4 WHERE Module_Name == 'DAB' AND Module_subtitle == 'v2' \
+UNION SELECT * FROM Unit_test4 WHERE Module_Name == 'Graphic' AND SDK_Name_Platform == 'Linux' ORDER BY Module_Name"
 
 test_result = pd.read_sql(sql, con)
 con.close()
 
-#모듈 결과 중 date가 없는 것과 MF만 별도 분리
-module_result = test_result[(test_result['test_date'] != 'none') & (test_result['Module_Name'] != 'MF')].drop_duplicates(['Module_Name'], keep='last')
-
-#MF 모듈 결과에서 subtitle까지 비교해서 중복값제거
-mf_result = test_result[test_result['Module_Name'] == 'MF'].drop_duplicates(['Module_subtitle'], keep='last')
-
-#module_result에 mf_result 추가
-module_result = module_result.append(mf_result)
-
-
 #DataFrame을 리스트로 변환
-test_result_list = module_result.values.tolist()
+test_result_list = test_result.values.tolist()
 
 for i in range(0, len(test_result_list)):
     sdk_name = test_result_list[i][1] + '_' + test_result_list[i][2] + '_' + test_result_list[i][3]

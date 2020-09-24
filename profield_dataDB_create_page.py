@@ -130,8 +130,6 @@ for i in range(0, len(project_data)):
             project_data[i].append(project_role[j][1])
             project_data[i].append(project_role[j][2])
 
-
-
 data = pd.DataFrame(project_data, columns = ['project_name', 'project_key', 'pl', 'category', '종료보고', 'application', 'chip', 'project_close', 'kick_off', 'platform', 'timespent', 'project_start', 'status', 'wiki', 'sub_pl', 'rit'])
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 data.to_sql('project_data', con, if_exists='replace', index = False)
@@ -158,7 +156,7 @@ for i in range(0, len(project_data)):
         elif j == 8 and project_data[i][j] != '': #kick_off에 link
             data_row += '<td><a href="' + project_data[i][j] + '">' + project_data[i][1] + '</a></td>'
         elif j == 13 and project_data[i][j] != '': #Wiki에 link
-            data_row += '<td><a href="' + project_data[i][j] + '">' + project_data[i][1] + '</a></td>'
+            data_row += '<td><a href="' + project_data[i][j] + '">' + project_data[i][0] + '</a></td>'
         elif (j == 14 or 15) and project_data[i][j] != '': #role 입력
             temp = ''
             for k in range(0, len(project_data[i][j])):
