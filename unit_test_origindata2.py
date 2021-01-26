@@ -112,7 +112,7 @@ for i in range(0, len(test_result_list)):
     data_row = '<tr>'
     for j in range(0, len(test_result_list[i])-1):
         if j==0:
-            data_row += '<td><a href="' + test_result_list[i][17] + '">' + test_result_list[i][j] + '</a></td>'
+            data_row += '<td><a href="' + test_result_list[i][17] + '">' + test_result_list[i][j] + '(' + test_result_list[i][17].split('=')[1] + ')' + '</a></td>'
         else:
             data_row += '<td>' + test_result_list[i][j] + '</td>'
     data_row += '</tr>'

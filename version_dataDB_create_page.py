@@ -29,6 +29,7 @@ status_archived = '<ac:structured-macro ac:name="status" ac:schema-version="1" a
 version_data = []
 for i in range(0, len(project_key)):
     url = requests.get('https://tcs.telechips.com:8443/rest/projects/1.0/project/' + project_key[i][0] + '/release/allversions', id_pw)
+    print(project_key[i][0])
     version = json.loads(url.text)
     if len(version) != 0:
         for j in range(0, len(version)):
@@ -46,17 +47,19 @@ for i in range(0, len(project_key)):
             url3 = requests.get('https://tcs.telechips.com:8443/rest/com.deniz.jira.worklog.email/1.0/timesheet/jql?startDate=' + str(year-1) + '-' + str(month) + '-' + str(day.day) + '&endDate=' + str(year) + '-' + str(month) + '-' + str(day.day) + '&jql=fixVersion%3D' + version[j]['id'] + '&targetKey=72', id_pw)
             resource = json.loads(url3.text)
             timespent = 0
-            for k in range(0, len(resource['projects'])):
-                for l in range(0, len(resource['projects'][k]['issues'])):
-                    for m in range(0, len(resource['projects'][k]['issues'][l]['workLogs'])):
-                        timespent += resource['projects'][k]['issues'][l]['workLogs'][m]['timeSpent']
-            member = ''
-            for o in range(0, len(resource['worklogAuthors'])):
-                if o == len(resource['worklogAuthors'])-1:
-                    member += resource['worklogAuthors'][o]['fullName'].replace('(', ' ').split()[0]
-                else:
-                    member += resource['worklogAuthors'][o]['fullName'].replace('(', ' ').split()[0] + ','
-            
+            if 'projects' in resource.keys():
+                for k in range(0, len(resource['projects'])):
+                    for l in range(0, len(resource['projects'][k]['issues'])):
+                        for m in range(0, len(resource['projects'][k]['issues'][l]['workLogs'])):
+                            timespent += resource['projects'][k]['issues'][l]['workLogs'][m]['timeSpent']
+                member = ''
+                for o in range(0, len(resource['worklogAuthors'])):
+                    if o == len(resource['worklogAuthors'])-1:
+                        member += resource['worklogAuthors'][o]['fullName'].replace('(', ' ').split()[0]
+                    else:
+                        member += resource['worklogAuthors'][o]['fullName'].replace('(', ' ').split()[0] + ','
+            else:
+                member = ''
             url4 = requests.get('https://tcs.telechips.com:8443/rest/api/2/search?jql=duedate<now()%20and%20status%20not%20in(Resolved%2CClosed)%20and%20fixVersion%3D'+ version[j]['id'] +'&maxResults=1&fields=1', id_pw)
             duedate_over = json.loads(url4.text)
             

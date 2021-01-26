@@ -8,7 +8,7 @@ send_mail = smtplib.SMTP('smtp.gmail.com', 587)
 send_mail.starttls()
  
 # 로그인 인증
-send_mail.login('telechips.rnd.noti@gmail.com', 'ucegzpmwcgsekovg')
+send_mail.login('telechips.rnd.noti@gmail.com', 'wmzqupmvwtpfqhur')
  
 # 보낼 메시지 설정
 msg = MIMEText('블라블라블라')

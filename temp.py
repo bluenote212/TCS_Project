@@ -1,7 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
+from flask import Flask
 
-This is a temporary script file.
-"""
+app = Flask(__name__)
 
+def index():
+    return "Hello Flask"
+    
+if __name__ == '__main__':
+    app.run()

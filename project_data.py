@@ -58,3 +58,4 @@ data = pd.DataFrame.from_dict(data_project, orient='index')
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 data.to_sql('project_info_' + nowdate, con, if_exists='replace', index_label = 'projectName')
 con.close()
+

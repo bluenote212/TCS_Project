@@ -1,25 +1,31 @@
-from selenium import webdriver
-from bs4 import BeautifulSoup
+import requests
+import sqlite3
+import simplejson as json
+import pandas as pd
+from atlassian import Confluence
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import time
 
-driver = webdriver.Chrome('C:/Users/B180093/python_test/chromedriver_win32/chromedriver.exe')
-driver.implicitly_wait(2)
+#id_pw를 가져와서 리스트로 변환
+con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+user = pd.read_sql("SELECT * FROM id_pw", con)
+user_info = user.values.tolist()
+con.close()
+id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
-driver.get('http://192.168.33.15:8080/')
-driver.implicitly_wait(1)
-
-driver.find_element_by_id('login_username').send_keys('admin')
-driver.find_element_by_id('login_password').send_keys('qwer1234!')
-driver.implicitly_wait(1)
-driver.find_element_by_id('login_button_container').click()
-
-driver.implicitly_wait(10)
-
-#html_id = driver.find_element_by_id('db_list')
-#html_xpath = driver.find_element_by_xpath('//*[@id="db_list"]')
-html_css = driver.find_element_by_css_selector('#db_list_contents > table')
+confluence = Confluence(
+    url='https://wiki.telechips.com:8443',
+    username = user_info[0][0],
+    password = user_info[0][1])
 
 
-html = driver.page_source
-soup = BeautifulSoup(html, 'html.parser')
+scope = ['https://spreadsheets.google.com/feeds']
+json_file_name = 'C:/Users/B180093/Downloads/google_key/intrepid-axe-277609-33a1d1aa400c.json'
+credentials = ServiceAccountCredentials.from_json_keyfile_name(json_file_name, scope)
+gc = gspread.authorize(credentials)
+spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1u6e_rS-6CZ_hKyM8fHNNx-wX2mIuGWe3hWq84Hmp4t4/edit?usp=sharing'
 
-print(soup.find_all('td'))
+sh = gc.open_by_url(spreadsheet_url)
+worksheet = sh.worksheet('test')
+worksheet.update_acell('A1','=sum(b1:c1)')

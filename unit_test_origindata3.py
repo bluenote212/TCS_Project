@@ -175,6 +175,8 @@ data_reindex = data_drop.reindex(['test_date', 'SDK_Name_Device', 'SDK_Name_Plat
                                   '수정불가_Codesonar_결함수', 'QAC_결함수', '수정불가_QAC_결함수', '전체코드라인수', 'URL'], axis=1)
 
 data = data_reindex.sort_values('test_date')
+
+
 data_dup = data.drop_duplicates(['SDK_Name_Device', 'SDK_Name_Platform', 'SDK_Name_Application', 'Subtitle', 'Version', 'Module_Name', 'Module_subtitle'], keep='last')
 
 #DB에 data를 저장
@@ -216,7 +218,7 @@ for i in range(0, len(test_result_list)):
     data_row = '<tr>'
     for j in range(0, len(test_result_list[i])-1):
         if j==0 and test_result_list[i][j] != '':
-            data_row += '<td><a href="' + test_result_list[i][17] + '">' + test_result_list[i][j] + '</a></td>'
+            data_row += '<td><a href="' + test_result_list[i][17] + '">' + test_result_list[i][j] + '(' + test_result_list[i][17].split('=')[1] + ')' + '</a></td>'
         elif j==0 and test_result_list[i][j] == '':
             data_row += '<td><a href="' + test_result_list[i][17] + '">' + test_result_list[i][17].split('=')[1] + '</a></td>'
         else:

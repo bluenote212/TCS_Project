@@ -22,21 +22,20 @@ team_code = [
         ['System BSP Team', '10', 'TMBSP', 'TCW02900'],
         ['Application BSP Team', '11', 'TMABT', 'TCW02203'],
         ['Security Solution Team', '9', 'TMSEC', 'TCW02700'],
+        ['Automotive MCU Team', '22', 'TMST', 'TCW03100'],
+        ['Audio Technology Team', '100', 'TMAT', 'DEPT196'],
         ['Media Android Team', '89', 'TMMT', 'DEPT182'],
         ['Media Linux Team', '90', 'TMMLT', 'TCW01230'],
         ['Media HAL Team', '91', 'TMMHT', 'DEPT183'],
-        ['Automotive MCU Team', '22', 'TMST', 'TCW03100'],
-        ['Wireless Team', '3', 'TMWT', 'TCW02070'],
-        ['Bluetooth Team', '19', 'TMBT', 'DEPT75'],
         ['SW Architecture Team', '14', 'TMSAT2', 'DEPT175'],
-        ['Project Management Team', '92', 'TMPMT', 'DEPT184'],
         ['STB Platform Team', '93', 'TMCAT', 'TCW03110'],
         ['Automotive Platform Team', '15', 'TMAPT', 'TCW02500'],
         ['Driver Assistance Platform Team', '18', 'TMAPT2', 'TCW02400'],
+        ['Core Technology Team', '101', 'TMCT', 'DEPT75'],
+        ['Project Management Team', '92', 'TMPMT', 'DEPT184'],
         ['RND Innovation Team', '2', 'TMTPD', 'TCW04300'],
         ['Technical Writing Team', '94', 'TMTWT','DEPT186']
         ]
-
 
 data = pd.DataFrame(team_code, columns = ['team', 'team_code', 'project_key','group_code'])
 
@@ -54,9 +53,18 @@ for i in range(0, len(team_code)):
         b = data['values'][i]['key']        
         d = data['values'][i]['emailAddress']
         user_data.append([a,b,c,d])
+
+user_data.append(['송봉기 (BongGee Song)','b150137','CTO','bgsong@telechips.com'])
+#user_data.append(['김문수 (Moonsoo Kim)','b020069','SOCG','mskim@telechips.com']) 팀장님 겸임으로 추가하지 않아도 됨
+user_data.append(['최재순 (JS Choi)','b030187','HWG','arm7@telechips.com'])
+user_data.append(['노호식 (Hosi Roh)','b050120','BSPG','rohhosik@telechips.com'])
+user_data.append(['이재호 (Justin Lee)','b030240','MMG','jhlee17@telechips.com'])
+user_data.append(['장지연 (Patrick Jang)','a990059','PLG','zerocool@telechips.com'])
+user_data.append(['이영종 (Daxter Lee)','b050109','RPG','yjrobot@telechips.com'])
         
 #user_data의 값을 DB에 저장
 table = pd.DataFrame(user_data, columns=['name', 'employee_No', 'team', 'email'])
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 table.to_sql('userData', con, if_exists='replace', index=False)
 con.close()
+

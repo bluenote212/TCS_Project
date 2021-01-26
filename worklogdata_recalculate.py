@@ -10,7 +10,7 @@ id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 #team code를 DB에서 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data_resource = pd.read_sql("SELECT * FROM RND_worklog_8_draft", con)
+data_resource = pd.read_sql("SELECT * FROM RND_worklog_12_draft", con)
 con.close()
 
 data_resource.loc[data_resource['issue_chip'] == 'Not related to Chip','issue_chip'] = data_resource['worklog_chip']
@@ -24,6 +24,7 @@ data_resource.loc[data_resource['issue_chip'] == 'NPU','issue_chip'] = '기초�
 data_resource.loc[data_resource['issue_chip'] == 'TCC530x','issue_chip'] = '기초연구'
 data_resource.loc[data_resource['issue_chip'] == 'TCC806x','issue_chip'] = 'TCC805x'
 data_resource.loc[data_resource['issue_chip'] == 'TCC901x','issue_chip'] = 'TCC899x'
+data_resource.loc[data_resource['issue_chip'] == 'TCC803xPE','issue_chip'] = 'TCC803x'
 
 data_resource = data_resource.drop(data_resource[data_resource['worklog_author'] == '송봉기 (BongGee Song)'].index)
 data_resource = data_resource.drop(data_resource[data_resource['worklog_author'] == '김문수 (Moonsoo Kim)'].index)
