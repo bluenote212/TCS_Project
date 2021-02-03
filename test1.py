@@ -26,11 +26,10 @@ project_key = data2.values.tolist()
 #현재 날짜 출력
 day = datetime.now()
 
-
 # 자동 전 월의 년도, 월, 첫째날, 마지막 날을 출력
 year_1 = 2021 #전 월의 년도
 month_1 = 1
-last_day = 26 #전월의 마지막 날짜를 출력
+last_day = 31 #전월의 마지막 날짜를 출력
 
 #각 팀 리소스 data 생성
 data_resource = []
@@ -73,7 +72,7 @@ for h in range(0, len(team_code)): #각 팀 반복
                 duedate = data2['projects'][j]['issues'][k]['dueDate'] #duedate 추가
                 issue_created = data2['projects'][j]['issues'][k]['created'] #created 추가
                 issue_timeSpent = data2['projects'][j]['issues'][k]['timeSpent'] #timeSpent 추가
-             
+
                 for l in range(0, len(data2['projects'][j]['issues'][k]['workLogs'])):
                     workstart = datetime.fromtimestamp(data2['projects'][j]['issues'][k]['workLogs'][l]['workStart']/1000).strftime('%Y-%m-%d')#worklog 기록 시간 추가
                     worklogcreated = datetime.fromtimestamp(data2['projects'][j]['issues'][k]['workLogs'][l]['worklogCreated']/1000).strftime('%Y-%m-%d')#worklog Created 시간 추가
@@ -107,7 +106,6 @@ data3 = requests.get(url, id_pw)
 data4 = json.loads(data3.text)
 worklog_attr_value_dic = {}
 
-
 # 모든 worklog(chip) 항목을 worklog_attr_value_dic 딕셔너리에 저장
 for i in range(0, len(data4['attributeValues'])):
         worklog_attr_value_dic.setdefault(str(data4['attributeValues'][i]['id']), str(data4['attributeValues'][i]['name']))
@@ -127,6 +125,6 @@ data = pd.DataFrame(data_resource, columns = ['project_name', 'project_key', 'pr
 
 #table 생성
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data.to_sql('RND_worklog_' + str(month_1) + '_draft_test', con, if_exists='replace', index = False)
+data.to_sql('RND_worklog_' + str(month_1) + '_draft', con, if_exists='replace', index = False)
 con.close()
 

@@ -11,9 +11,13 @@ user_info = user.values.tolist()
 con.close()
 id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
+#sql = "SELECT * FROM userData WHERE name='신호찬 (Chance H Shin)'"
+sql = "SELECT * FROM userData WHERE team='RND Innovation Team'"
+#sql = "SELECT * FROM userData WHERE team NOT in('Group Leader','CTO')"
+
 #user_data를 DB에서 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-user_data = pd.read_sql("SELECT * FROM userData WHERE team='RND Innovation Team'", con) # WHERE 조건 확인
+user_data = pd.read_sql(sql, con) # WHERE 조건 확인
 con.close()
 user_data = user_data.values.tolist()
 
@@ -75,6 +79,7 @@ else:
         text_temp = str(day.month) + '/' + str(day.day)+ '일 (' + day_week + ') ' + user_worklog[i][0] + '님은 ' + user_worklog[i][3] + '시간 Worklog를 입력했습니다.' + \
         '\n혹시 누락된 Worklog가 있으면 입력해 주세요.'
         user_worklog[i].append(text_temp)
+print(user_worklog)
 
 
 #Line Works Message push URL, header에는 인증 정보
@@ -100,3 +105,4 @@ for i in range(0, len(user_worklog)):
      }
     }
     r = requests.post(url, data=json.dumps(payload), headers=headers)
+    print(user_worklog[i][2])

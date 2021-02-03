@@ -55,12 +55,12 @@ for i in range(0, len(team_code)):
         user_data.append([a,b,c,d])
 
 user_data.append(['송봉기 (BongGee Song)','b150137','CTO','bgsong@telechips.com'])
-#user_data.append(['김문수 (Moonsoo Kim)','b020069','SOCG','mskim@telechips.com']) 팀장님 겸임으로 추가하지 않아도 됨
-user_data.append(['최재순 (JS Choi)','b030187','HWG','arm7@telechips.com'])
-user_data.append(['노호식 (Hosi Roh)','b050120','BSPG','rohhosik@telechips.com'])
-user_data.append(['이재호 (Justin Lee)','b030240','MMG','jhlee17@telechips.com'])
-user_data.append(['장지연 (Patrick Jang)','a990059','PLG','zerocool@telechips.com'])
-user_data.append(['이영종 (Daxter Lee)','b050109','RPG','yjrobot@telechips.com'])
+#user_data.append(['김문수 (Moonsoo Kim)','b020069','Group Leader','mskim@telechips.com']) 팀장님 겸임으로 추가하지 않아도 됨
+user_data.append(['최재순 (JS Choi)','b030187','Group Leader','arm7@telechips.com'])
+user_data.append(['노호식 (Hosi Roh)','b050120','Group Leader','rohhosik@telechips.com'])
+user_data.append(['이재호 (Justin Lee)','b030240','Group Leader','jhlee17@telechips.com'])
+user_data.append(['장지연 (Patrick Jang)','a990059','Group Leader','zerocool@telechips.com'])
+user_data.append(['이영종 (Daxter Lee)','b050109','Group Leader','yjrobot@telechips.com'])
         
 #user_data의 값을 DB에 저장
 table = pd.DataFrame(user_data, columns=['name', 'employee_No', 'team', 'email'])
