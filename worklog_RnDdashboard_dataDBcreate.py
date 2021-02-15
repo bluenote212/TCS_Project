@@ -43,6 +43,9 @@ team_etc = data_resource[((data_resource['project_category'] == 'RnD-팀 프로�
 
 develop_unique = develop['project_name'].drop_duplicates()
 
+dev_ratio = [develop['worklog_timespent'].sum(),team_dev['worklog_timespent'].sum()]
+print(dev_ratio)
+
 team_resource = []
 for i in range(0, len(team_code)):
     #팀 프로젝트의 품질 data 생성
@@ -51,9 +54,7 @@ for i in range(0, len(team_code)):
     etc = team_etc[(team_etc['team'] == team_code[i][0])]['worklog_timespent'].sum()
     team_resource.append([date, team_code[i][0] , round(dev, 1), round(tims, 1), round(etc, 1)])
 
-print(team_resource)
 
-'''
 #temp에 프로젝트별 리소스 저장
 temp = []
 for i in range(len(develop_unique)):
@@ -74,4 +75,3 @@ team_resource = pd.DataFrame(team_resource, columns=['date', 'team', 'devlop', '
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
 team_resource.to_sql('team_resource', con, if_exists='append', index = False)
 con.close()
-'''

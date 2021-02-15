@@ -12,8 +12,8 @@ con.close()
 id_pw = {'os_username': user_info[0][0], 'os_password': user_info[0][1]}
 
 #sql = "SELECT * FROM userData WHERE name='신호찬 (Chance H Shin)'"
-sql = "SELECT * FROM userData WHERE team='RND Innovation Team'"
-#sql = "SELECT * FROM userData WHERE team NOT in('Group Leader','CTO')"
+#sql = "SELECT * FROM userData WHERE team='RND Innovation Team'"
+sql = "SELECT * FROM userData WHERE team NOT in('Group Leader','CTO')"
 
 #user_data를 DB에서 가져와서 리스트로 변환
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
@@ -41,12 +41,12 @@ if week == 0:
         for j in range(0, len(data2['projects'])):
             for k in range(0, len(data2['projects'][j]['issues'])):
                 for l in range(0, len(data2['projects'][j]['issues'][k]['workLogs'])):
-                    time += round(data2['projects'][j]['issues'][k]['workLogs'][l]['timeSpent']/60/60,1)
+                    time += data2['projects'][j]['issues'][k]['workLogs'][l]['timeSpent']/60/60
         time_up = round(time,1)
         user_worklog.append([user_data[i][0], user_data[i][1], user_data[i][3], str(time_up)]) # 이름, 사번, 이메일, worklog를 리스트로 저장
     for i in range(0, len(user_worklog)):
-        text_temp = str(day.month) + '/' + str(day.day)+ '일 (' + day_week + ') ' + user_worklog[i][0] + '님은 ' + user_worklog[i][3] + '시간 Worklog를 입력했습니다.' + \
-        '\n혹시 누락된 Worklog가 있으면 입력해 주세요 (주말 근무자는 토/일 Worklog도 확인)'
+        text_temp = user_worklog[i][0] + '님은 ' + str(day.month) + '/' + str(day.day)+ '일 (' + day_week + ') ' + ' Worklog를 6h 이하로 입력했습니다.' + \
+        '\n누락된 Worklog가 있으면 입력해 주세요 (주말 근무자는 토/일 Worklog도 확인)'
         user_worklog[i].append(text_temp)
         
 else:
@@ -72,14 +72,13 @@ else:
         for j in range(0, len(data2['projects'])):
             for k in range(0, len(data2['projects'][j]['issues'])):
                 for l in range(0, len(data2['projects'][j]['issues'][k]['workLogs'])):
-                    time += round(data2['projects'][j]['issues'][k]['workLogs'][l]['timeSpent']/60/60,1)
+                    time += data2['projects'][j]['issues'][k]['workLogs'][l]['timeSpent']/60/60
         time_up = round(time,1)
         user_worklog.append([user_data[i][0], user_data[i][1], user_data[i][3], str(time_up)]) # 이름, 사번, 이메일, worklog를 리스트로 저장
     for i in range(0, len(user_worklog)):
-        text_temp = str(day.month) + '/' + str(day.day)+ '일 (' + day_week + ') ' + user_worklog[i][0] + '님은 ' + user_worklog[i][3] + '시간 Worklog를 입력했습니다.' + \
+        text_temp = user_worklog[i][0] + '님은 ' + str(day.month) + '/' + str(day.day)+ '일 (' + day_week + ') ' + ' Worklog를 6h 이하로 입력했습니다.' + \
         '\n혹시 누락된 Worklog가 있으면 입력해 주세요.'
         user_worklog[i].append(text_temp)
-print(user_worklog)
 
 
 #Line Works Message push URL, header에는 인증 정보
@@ -87,22 +86,25 @@ url = 'https://apis.worksmobile.com/r/kr1llsnPeSqSR/message/v1/bot/1809717/messa
 headers = {
     'Content-Type' : 'application/json; charset=UTF-8',
     'consumerKey' : 'IuAF6mCrW4FiTxWF6bmm',
-    'Authorization' : 'Bearer AAABAXONcN0Ch9T4YmhyDiRG+1ilvRZoM1MoutdUZLzV6++m3h+/fipKAlD0I1OKCbAJFWhuiQV07ldyuY1M3qu0pVEKqWcrhPdK5k2PKp2Xo42bfFsPleMt8D0+ZHqJVGrXPdw3JheNM5hkVqpzEc0l24vlpymIeLTg74+aEUFa+SpI6mjkbP'+ \
-    '5vJwD5kR8auewDnQgmuE1cwdBVlveJq2ZDC7ohbAF29Hfd/Wmc75h72LAC3W1Zea+4LF/UpKoBnSxCmqSInyWmyYwAJ5HBrPp/9PdoxB5SqRma2aFswhmwvaR/6AClqjmuAKdGlcgA+DertSmLCCer7i2iNXxNimgqXsrvEAHQQpLwtrv8IGdcV/sf'
+    'Authorization' : 'Bearer AAAA/nbEb0dM/5HS9XoOQR2VRvz+sMDtNRlrthxawuCejBN7uKg3Ylx75GbMnDMR0J+vqc9Yo5ACKzsrFrNA8GjN73ea98LqyMlgMsCxrGavZbnaY3JB5qPOkBatmDjfsxgWMzR8f7/sFUacKjOjhDbOAeeT/qlpsZpkmFKrmR9vo/MD9j+zYmbCuXoel6/zkJ56iJ4BJ5JCRELxdwqQk95iO6a4mJUK52/vVSFurNss53uI2NyoFPoyJXzMXbXcLa1enc8oKntUeP35Cy4+ovZs9d83NyVu+2d0rgfQPxPmxf6yYgjBfOKvjb2s4uJggCOd47wl6M5x9UO7QfPAOj+6G/4='
 }
 
 #Bot으로 연구원들에게 전날 기록한 worklog를 noti 보냄
 for i in range(0, len(user_worklog)):
-    payload = {
-    'botNo': '1809717',
-    'accountId': user_worklog[i][2],
-    'content': {
-        'type': 'link',
-        'contentText': user_worklog[i][4],
-        'linkText': 'Worklog 확인',
-        'link': 'https://tcs.telechips.com:8443/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=WEEK&targetType=USER&calendarType=CUSTOM&groupingType=ISSUE#targetType=USER&targetKey='+ user_data[i][1]\
-        + '&groupingType=Issue&periodMode=WEEK&&&periodLocked=false&calendarType=CUSTOM&saveToUserHistory=false&extraIssueFilter=&viewType=TIMESHEET'
-     }
-    }
-    r = requests.post(url, data=json.dumps(payload), headers=headers)
-    print(user_worklog[i][2])
+    if float(user_worklog[i][3]) < float(6):
+        payload = {
+        'botNo': '1809717',
+        'accountId': user_worklog[i][2],
+        'content': {
+            'type': 'link',
+            'contentText': user_worklog[i][4],
+            'linkText': 'Worklog 확인',
+            'link': 'https://tcs.telechips.com:8443/secure/WPShowTimesheetAction!customTimesheet.jspa?periodMode=WEEK&targetType=USER&calendarType=CUSTOM&groupingType=ISSUE#targetType=USER&targetKey='+ user_data[i][1]\
+            + '&groupingType=Issue&periodMode=WEEK&&&periodLocked=false&calendarType=CUSTOM&saveToUserHistory=false&extraIssueFilter=&viewType=TIMESHEET'
+         }
+        }
+        r = requests.post(url, data=json.dumps(payload), headers=headers)
+        print(r,user_worklog[i][0] + ' : ' + user_worklog[i][3])
+    else:
+        continue
+

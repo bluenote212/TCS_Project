@@ -14,6 +14,6 @@ confluence = Confluence(
     username = user_info[0][0],
     password=user_info[0][1])
 
-page_info_body1 = confluence.get_page_by_id(163026675, expand='space,body.view,version,container')
+page_info_body1 = confluence.get_page_by_id(175327739, expand='space,body.view,version,container')
 
 print(page_info_body1['body']['view']['value'])

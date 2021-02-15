@@ -28,7 +28,6 @@ team_code = [
         ['Media Linux Team', '90', 'TMMLT', 'TCW01230'],
         ['Media HAL Team', '91', 'TMMHT', 'DEPT183'],
         ['SW Architecture Team', '14', 'TMSAT2', 'DEPT175'],
-        ['STB Platform Team', '93', 'TMCAT', 'TCW03110'],
         ['Automotive Platform Team', '15', 'TMAPT', 'TCW02500'],
         ['Driver Assistance Platform Team', '18', 'TMAPT2', 'TCW02400'],
         ['Core Technology Team', '101', 'TMCT', 'DEPT75'],
@@ -47,12 +46,19 @@ user_data = []
 for i in range(0, len(team_code)):
     resource = requests.get('https://tcs.telechips.com:8443/rest/api/2/group/member?includeInactiveUsers=false&groupname=' + team_code[i][3], id_pw)
     data = json.loads(resource.text)
-    c = team_code[i][0]
-    for i in range(0, len(data['values'])):
-        a = data['values'][i]['displayName']
-        b = data['values'][i]['key']        
-        d = data['values'][i]['emailAddress']
-        user_data.append([a,b,c,d])
+    for j in range(0, len(data['values'])):
+        if data['values'][j]['displayName'] != '김문수 (Moonsoo Kim)': #김문수G 팀장 겸임으로 team을 Group Leader로 변경하는 분기
+            a = data['values'][j]['displayName']
+            b = data['values'][j]['key']
+            c = team_code[i][0]
+            d = data['values'][j]['emailAddress']
+            user_data.append([a,b,c,d])
+        else:
+            a = data['values'][j]['displayName']
+            b = data['values'][j]['key']
+            c = 'Group Leader'
+            d = data['values'][j]['emailAddress']
+            user_data.append([a,b,c,d])
 
 user_data.append(['송봉기 (BongGee Song)','b150137','CTO','bgsong@telechips.com'])
 #user_data.append(['김문수 (Moonsoo Kim)','b020069','Group Leader','mskim@telechips.com']) 팀장님 겸임으로 추가하지 않아도 됨
