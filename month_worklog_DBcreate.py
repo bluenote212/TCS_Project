@@ -28,7 +28,7 @@ day = datetime.now()
 
 # 자동 전 월의 년도, 월, 첫째날, 마지막 날을 출력
 year_1 = 2021 #전 월의 년도
-month_1 = 1
+month_1 = 3
 last_day = 31 #전월의 마지막 날짜를 출력
 
 #각 팀 리소스 data 생성
@@ -125,6 +125,6 @@ data = pd.DataFrame(data_resource, columns = ['project_name', 'project_key', 'pr
 
 #table 생성
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data.to_sql('RND_worklog_' + str(month_1) + '_draft', con, if_exists='replace', index = False)
+data.to_sql('RND_worklog_'+ str(year_1) + str(month_1) + '_draft', con, if_exists='replace', index = False)
 con.close()
 

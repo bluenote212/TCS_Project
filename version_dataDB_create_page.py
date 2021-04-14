@@ -59,7 +59,7 @@ for i in range(0, len(project_key)):
                     else:
                         member += resource['worklogAuthors'][o]['fullName'].replace('(', ' ').split()[0] + ','
             else:
-                member = ''
+                member = '' #due date가 over된 이슈 개수를 구하는 request
             url4 = requests.get('https://tcs.telechips.com:8443/rest/api/2/search?jql=duedate<now()%20and%20status%20not%20in(Resolved%2CClosed)%20and%20fixVersion%3D'+ version[j]['id'] +'&maxResults=1&fields=1', id_pw)
             duedate_over = json.loads(url4.text)
             

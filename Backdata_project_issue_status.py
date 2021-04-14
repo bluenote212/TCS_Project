@@ -50,9 +50,9 @@ for i in range(0, len(project_key)):
 
 
 #Wiki 페이지에 version Data page 생성
-wiki_data_top = '<div class="table-excerpt conf-macro output-block" data-pageid="175327739" data-id="project_issue_status" data-hasbody="true" data-macro-name="table-excerpt"><div class="table-wrap"><table class="confluenceTable"><colgroup><col /><col /><col /><col /><col /></colgroup><tbody><tr><th class="confluenceTh">project_key</th><th class="confluenceTh">date</th><th class="confluenceTh">total</th><th class="confluenceTh">2weeks</th><th class="confluenceTh">pending</th></tr>'
+wiki_data_top = '<p class="auto-cursor-target"><br /></p><ac:structured-macro ac:name="table-excerpt" ac:schema-version="1" ac:macro-id="161913ea-7275-49ec-89af-a4e8e775825c"><ac:parameter ac:name="name">WBS</ac:parameter><ac:rich-text-body><p><br /></p><table class="wrapped"><colgroup><col /><col /><col /><col /><col /></colgroup><tbody><tr><th>Key</th><th><div class="content-wrapper"><p class="auto-cursor-target">date</p></div></th><th>total</th><th>2weeks</th><th>pending</th></tr>'
 wiki_data_middle = ''
-wiki_data_bottom = '</tbody></table></div></div>'
+wiki_data_bottom = '</tbody></table><p class="auto-cursor-target"><br /></p></ac:rich-text-body></ac:structured-macro><p class="auto-cursor-target"><br /></p>'
 
 for i in range(0, len(project_issue_data)):
     row = '<tr><td class="confluenceTd">' + str(project_issue_data[i][0]) + '</td><td class="confluenceTd">' + str(project_issue_data[i][1]) + '</td><td class="confluenceTd">' + str(project_issue_data[i][2]) + '</td><td class="confluenceTd">' + str(project_issue_data[i][3]) + '</td><td class="confluenceTd">' + str(project_issue_data[i][4]) + '</td></tr>'
@@ -61,11 +61,18 @@ for i in range(0, len(project_issue_data)):
 wiki = wiki_data_top + wiki_data_middle + wiki_data_bottom
 wiki = wiki.replace("&","<p>&amp;</p>") #특수문자 & 치환
 
+
 confluence = Confluence(
     url='https://wiki.telechips.com:8443',
     username = user_info[0][0],
     password = user_info[0][1]
     )
+
+'''
+con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
+data.to_sql('RND_worklog_' + str(month_1) + '_draft_ttt', con, if_exists='replace', index = False)
+con.close()
+'''
 
 confluence.update_page(
         parent_id = 95455710,
