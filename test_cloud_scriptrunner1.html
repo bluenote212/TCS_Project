@@ -1,0 +1,47 @@
+<html>
+<head>
+    <script src="https://assets.hydrogen.sagittarius.connect.product.adaptavist.com/public/js/bridge.js"></script>
+    <script language="JavaScript" type="text/javascript">
+        function JiraRequest() {
+          var oDiv = document.getElementById("jiraResult");
+          oDiv.innerHTML = "";
+          
+          /*
+          for (var key in AdaptavistBridge.context)
+            oDiv.innerHTML += "key - " + key + ", value - " + AdaptavistBridge.context[key] + "<br>";
+          */
+          
+          oDiv.innerHTML += "key : " + AdaptavistBridge.context.itemKey + "<br>"
+          
+          /*
+          var oOptions = {
+            url: "/rest/api/2/issue/" + AdaptavistBridge.context.itemKey,
+            type: "GET"
+          };
+          
+          let oRequest = AdaptavistBridge.request(oOptions);
+          
+          oRequest.finally(
+            () => {oDiv.innerHTML += "Request is done<br>"}
+          );
+          
+          oRequest.then(
+            rez => {oDiv.innerHTML += "Result -" + rez},
+            err => {oDiv.innerHTML += "Error -" + err}
+          );
+          */
+          
+          AdaptavistBridge.request({
+            url: "/rest/api/2/myself",
+            type: 'GET'
+            })
+            //.then(d => {oDiv.innerHTML += Object.keys(d)});
+            .then(d => {oDiv.innerHTML += "DisplayName : " + d.displayName});
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="issue_info Request" onclick="JiraRequest()"><br>
+    <div id="jiraResult"></div>
+</body>
+    

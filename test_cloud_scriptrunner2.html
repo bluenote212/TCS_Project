@@ -1,0 +1,27 @@
+<html>
+<head>
+    <script src="https://connect-cdn.atl-paas.net/all.js" crossorigin="anonymous"></script>
+    <script language="JavaScript" type="text/javascript">
+        function JiraRequest() {
+            var oDiv = document.getElementById("jiraResult");
+            console.log("QWERTY !!!");
+            oDiv.innerHTML = "";
+            //var oContext = AdaptavistBridgeContext.context;
+            //for (var key in oContext)
+            //  oDiv.innerHTML += "key - " + key + ", value - " + oContext[key] + "<br>";
+            /*AP.request('/rest/api/user/current')
+              .then(data => {oDiv.innerHTML += data})
+                .catch(e => {oDiv.innerHTML += e.err});*/
+            
+            //for (var key in AP)
+                //   oDiv.innerHTML += "key - " + key + ", value - " + AP[key] + "<br>";
+                for (key in AP.parentTargets)
+                    oDiv.innerHTML += "key - " + key + ", value - " + AP.parentTargets[key] + "<br>";
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="issue_info Request" onclick="JiraRequest()"><br>
+    <div id="jiraResult"></div>
+</body>
+    
