@@ -1,0 +1,25 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+      $('.ipinfo').click(function(){
+          $.ajax({
+              type:"GET",
+              url:"https://css.telechips.com/api/code/list?val=priority",
+              dataType:"json",
+              success: function(data) {
+                  $('.result').append('<ul class="list-group"><li class="list-group-item">'+data.msg+'</li></ul>');
+                }
+            });
+        });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+<button type="button" class="btn btn-primary btn-sm ipinfo">Jquery Get</button>
+<div class="result"></div>
+</div>
+</body>
+</html>

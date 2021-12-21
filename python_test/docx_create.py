@@ -1,7 +1,13 @@
 from docx import Document
 from docx.shared import Pt, RGBColor
+import aspose.words as aw
 
-document = Document('C:/Users/B180093/Desktop/release_note.docx')
+doc = aw.Document('C:/Users/B180093/Desktop/release_note.docx')
+doc.save("C:/Users/B180093/Desktop/release_note.pdf")
+
+
+
+'''
 style = document.styles['Normal']
 style.font.name = 'Tahoma'
 
@@ -31,3 +37,4 @@ for i in document.paragraphs:
         i.text = i.text.replace('{symptom}', 'blablabla')
 
 document.save('C:/Users/B180093/Desktop/result.docx')
+'''

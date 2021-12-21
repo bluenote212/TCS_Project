@@ -693,3 +693,245 @@ runfile('C:/Users/B180093/.spyder-py3/worklog_RnDdashboard_dataDBcreate.py', wdi
 runfile('C:/Users/B180093/.spyder-py3/worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/worklog_RnDdashboard_dataDBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
 runfile('C:/Users/B180093/.spyder-py3/worklog_recalculate.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Thu Nov  4 14:29:20 2021)---
+runfile('C:/Users/B180093/.spyder-py3/test_tims_copy_debug.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+print(r.text)
+clear
+runfile('C:/Users/B180093/.spyder-py3/test_tims_copy_debug.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('Y:/anaconda3/envs/telechips/main/rest.py', wdir='Y:/anaconda3/envs/telechips/main')
+runfile('C:/Users/B180093/.spyder-py3/test_tims_copy_debug.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Fri Nov  5 17:17:24 2021)---
+runfile('C:/Users/B180093/.spyder-py3/test_tims_copy_debug.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Wed Nov 10 09:02:31 2021)---
+runfile('Y:/anaconda3/envs/telechips/testcode/bot_view_count.py', wdir='Y:/anaconda3/envs/telechips/testcode')
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/css_data_parse.py', wdir='C:/Users/B180093/.spyder-py3')
+runcell(0, 'C:/Users/B180093/.spyder-py3/css_data_parse.py')
+print(len(data1['list'][0]['child']))
+runfile('C:/Users/B180093/.spyder-py3/css_data_parse.py', wdir='C:/Users/B180093/.spyder-py3')
+runcell(0, 'C:/Users/B180093/.spyder-py3/css_data_parse.py')
+runfile('C:/Users/B180093/.spyder-py3/css_data_parse.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/css_data_parse.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/css_data_parse.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/css_data_parse.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Mon Nov 15 10:47:18 2021)---
+runcell(0, 'Y:/anaconda3/envs/telechips/main/tcs.py')
+
+## ---(Tue Nov 16 09:56:16 2021)---
+runfile('C:/Users/B180093/.spyder-py3/python_test/docx_create.py', wdir='C:/Users/B180093/.spyder-py3/python_test')
+
+## ---(Wed Nov 17 10:10:50 2021)---
+runfile('C:/Users/B180093/.spyder-py3/gerrit_api_test.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Wed Nov 17 10:29:57 2021)---
+runfile('C:/Users/B180093/.spyder-py3/gerrit_api_test.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Wed Nov 17 10:32:45 2021)---
+runfile('C:/Users/B180093/.spyder-py3/gerrit_api_test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/python_test/docx_create.py', wdir='C:/Users/B180093/.spyder-py3/python_test')
+runfile('C:/Users/B180093/.spyder-py3/gerrit_api_test.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Fri Nov 19 09:24:43 2021)---
+runfile('C:/Users/B180093/.spyder-py3/gerrit_api_test.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/gerrit_api_test.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/gerrit_api_test.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/ldap_auth.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Mon Nov 22 09:39:18 2021)---
+runfile('C:/Users/B180093/.spyder-py3/ldap_auth.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('Y:/anaconda3/envs/telechips/testcode/bot_view_count.py', wdir='Y:/anaconda3/envs/telechips/testcode')
+runfile('Y:/anaconda3/envs/telechips/testcode/test_htmltopdf.py', wdir='Y:/anaconda3/envs/telechips/testcode')
+runfile('Z:/python_cron/Lineworks_noti_worklog.py', wdir='Z:/python_cron')
+
+## ---(Wed Nov 24 08:32:00 2021)---
+runfile('C:/Users/B180093/.spyder-py3/test_tims_tcs_issuecopy.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/test_tims_tcs_issuecopy.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/test_tims_tcs_issuecopy.py', wdir='C:/Users/B180093/.spyder-py3')
+print(tims_data['fields']['customfield_11300'])
+print(tims_data['fields']['customfield_12001']['value'])
+print(tims_data['fields']['customfield_12200']['value'])
+print(tims_data['fields']['customfield_12002']['value'])
+print(tims_data['fields']['customfield_10003']['value'])
+print(tims_data['fields']['comment'])
+print(tims_data['fields']['comment']['body'])
+print(tims_data['fields']['comment'][0]['body'])
+print(tims_data['fields']['comment'][0]['comments'])
+print(tims_data['fields']['comment']['comments'][0]['body'])
+runfile('C:/Users/B180093/.spyder-py3/test_tims_tcs_issuecopy.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/python_test/carousel_test.py', wdir='C:/Users/B180093/.spyder-py3/python_test')
+runfile('C:/Users/B180093/.spyder-py3/test_tims_tcs_issuecopy.py', wdir='C:/Users/B180093/.spyder-py3')
+print(tims_data['fields']['customfield_12001'])
+runfile('C:/Users/B180093/.spyder-py3/test_tims_tcs_issuecopy.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+runcell(0, 'C:/Users/B180093/.spyder-py3/test_css_api.py')
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test_patchissue_css.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+runcell(0, 'C:/Users/B180093/.spyder-py3/test_patchissue_css.py')
+runfile('C:/Users/B180093/.spyder-py3/test_patchissue_css.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Thu Nov 25 08:43:55 2021)---
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test_patchissue_css.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(len(data_sdk_patch_list['list']))
+runfile('C:/Users/B180093/.spyder-py3/test_patchissue_css.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list)
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list['TCC803x_Android10_IVI__1.0.0'])
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(len(sdk_list['TCC803x_Android10_IVI__1.0.0'][2]))
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Thu Nov 25 13:21:05 2021)---
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list[0])
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list.keys()[0])
+print(list(sdk_list.keys()))
+print(list(sdk_list.keys())[0])
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list.keys())
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list)
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+print(day.microsecond)
+
+## ---(Fri Nov 26 10:54:50 2021)---
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list)
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list[0])
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list[0][3])
+print(len(sdk_list[0][3]))
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list[0])
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data[0])
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+cler
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(sdk_list_dict.keys())
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(list(sdk_list_dict.keys()))
+
+## ---(Mon Nov 29 10:17:14 2021)---
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+
+## ---(Tue Nov 30 14:02:39 2021)---
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Wed Dec  1 11:12:44 2021)---
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+clear
+print(css_tims['list'])
+
+## ---(Thu Dec  2 10:25:45 2021)---
+runfile('C:/Users/B180093/.spyder-py3/project_key_category_DB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/teamcode_userDB_create.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/worklog_minor.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Fri Dec  3 10:04:11 2021)---
+runfile('C:/Users/B180093/.spyder-py3/worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Tue Dec  7 09:43:40 2021)---
+runfile('C:/Users/B180093/.spyder-py3/worklog_recalculate.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/worklog_RnDdashboard_dataDBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Tue Dec  7 13:16:54 2021)---
+runfile('C:/Users/B180093/.spyder-py3/worklog_RnDdashboard_dataDBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Tue Dec  7 17:04:10 2021)---
+runfile('C:/Users/B180093/.spyder-py3/worklog_DBcreate.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Thu Dec  9 09:27:46 2021)---
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+print(data_sdk_list)
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Fri Dec 10 16:15:40 2021)---
+runfile('Z:/python_cron/untitled0.py', wdir='Z:/python_cron')
+runfile('Z:/python_cron/test2.py', wdir='Z:/python_cron')
+runfile('Z:/python_cron/Wikicreate_profield_data.py', wdir='Z:/python_cron')
+
+## ---(Tue Dec 14 17:43:14 2021)---
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Wed Dec 15 08:40:30 2021)---
+runfile('C:/Users/B180093/.spyder-py3/Worklog_dev_ratio.py', wdir='C:/Users/B180093/.spyder-py3')
+print(r.status_code, r.text)
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Thu Dec 16 12:15:11 2021)---
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+print('TMTPD-123'.split('-'))
+print('TMTPD-123'.split('-')[0])
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Fri Dec 17 08:45:01 2021)---
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/DBcreate_css_sdk_list.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/ldap_auth.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Tue Dec 21 10:53:32 2021)---
+runfile('C:/Users/B180093/.spyder-py3/test_css_api.py', wdir='C:/Users/B180093/.spyder-py3')
+runfile('C:/Users/B180093/.spyder-py3/ldap_auth.py', wdir='C:/Users/B180093/.spyder-py3')
+
+## ---(Wed Dec 22 08:38:49 2021)---
+runfile('C:/Users/B180093/.spyder-py3/ldap_auth.py', wdir='C:/Users/B180093/.spyder-py3')

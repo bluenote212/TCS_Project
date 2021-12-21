@@ -21,9 +21,9 @@ con.close()
 team_code = team_code.values.tolist()
 
 #월별 리소스 DB를 가져와서 데이터 가공 해당 월 입력 data 변수 수정, DB Table 이름 수정 !!!!!------------------------------------------------------------------------------------------!!!!!!!!!!!!!
-date = '20211031'
+date = '20211130'
 con = sqlite3.connect('C:/Users/B180093/database/tcs.db')
-data_resource = pd.read_sql("SELECT * FROM RND_worklog_202110_draft", con)
+data_resource = pd.read_sql("SELECT * FROM RND_worklog_202111_draft", con)
 con.close()
 #----------------------------------------------------------------------------------------------------------------------------
 
